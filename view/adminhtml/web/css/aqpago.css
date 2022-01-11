@@ -1,0 +1,16 @@
+.aqbank-payment-logo {
+	background: url("../images/aqbank_log_card.svg")  no-repeat 0 0% / 18rem auto;
+    height: 100px; 
+	width: auto; 
+	padding-left: 20rem; 
+	display:inline-block; 
+	vertical-align: middle;
+}
+.aqbank-button-container {
+	float: right;
+}
+.aqbank-payment-text { 
+	display: inline-block; 
+	vertical-align: middle; 
+	width: 50%;
+}

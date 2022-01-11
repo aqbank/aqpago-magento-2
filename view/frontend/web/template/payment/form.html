@@ -1,0 +1,331 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-method payment-method-aqbank" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()" />
+        <label data-bind="attr: {'for': getCode()}" class="label">
+            <span data-bind="text: getTitle()"></span>
+        </label>
+    </div>
+	
+	<div id="title-set-payment-type" class="aqbank_payment_title aqbank_justify_left" style="display: none !important;" data-bind="i18n: 'PAGAMENTO INTEGRAL'"></div>
+	
+	<div class="payment-method-content aqbank-payment-description">
+		<!-- ko i18n: 'Escolha a'--><!-- /ko -->
+		<strong><!-- ko i18n: 'melhor'--><!-- /ko --></strong>
+		<!-- ko i18n: 'forma de'--><!-- /ko -->
+		<strong><!-- ko i18n: 'pagamento'--><!-- /ko --></strong>
+	</div>
+	
+	<div id="list-new" class="aqbank-add-new-card"></div>
+	
+	<div class="payment-method-content aqbank_type_payment">
+	
+		<div class="aqbank_type_payment_li">
+			<div class="aqbank_type_payment_li_box credit" data-bind="click: function(){ setPaymentMethod('credit') }">
+				<input type="radio"
+					   name="aqbank_payment_type[method]"
+					   value="credit"
+					   checked
+					   class="radio aqbank-type-radio"
+					   data-bind="attr: {'id': getCode() + '_aqbank_payment_credit'}" style="display: none;" />
+				<img class="aqbank-ico" data-bind="attr: { src: getIconCard()}" />
+				<div class="payment_li_text">
+					<strong><!-- ko i18n: 'Cartão'--><!-- /ko --></strong>
+					<span class="text-light"><!-- ko i18n: 'de Crédito'--><!-- /ko --></span>
+				</div>
+				<img class="aqbank-arrow-right" data-bind="attr: { src: getArrowRight()}" />
+				<span class="change-text"></span>
+			</div>
+		</div>
+		<div class="aqbank_type_payment_li">
+			<div class="aqbank_type_payment_li_box credit_multiple" data-bind="click: function(){ setPaymentMethod('credit_multiple') }">
+				<input type="radio"
+					   name="aqbank_payment_type[method]"
+					   value="credit_multiple"
+					   checked
+					   class="radio aqbank-type-radio"
+					   data-bind="attr: {'id': getCode() + '_aqbank_payment_credit_multiple'}" style="display: none;" />
+				<img class="aqbank-ico" data-bind="attr: { src: getIconTwoCards() }" />
+				<div class="payment_li_text">
+					<strong><!-- ko i18n: '2 Cartões'--><!-- /ko --></strong>
+					<span class="text-light"><!-- ko i18n: 'de Crédito'--><!-- /ko --></span>
+				</div>
+				<img class="aqbank-arrow-right" data-bind="attr: { src: getArrowRight()}" />
+				<span class="change-text"></span>
+			</div>
+		</div>		
+		<div class="aqbank_type_payment_li">
+			<div class="aqbank_type_payment_li_box ticket_multiple" data-bind="click: function(){ setPaymentMethod('ticket_multiple') }">
+				<input type="radio"
+					   name="aqbank_payment_type[method]"
+					   value="ticket_multiple"
+					   checked
+					   class="radio aqbank-type-radio"
+					   data-bind="attr: {'id': getCode() + '_aqbank_payment_ticket_multiple'}" style="display: none;" />
+				<img class="aqbank-ico" data-bind="attr: { src: getIconCreditTicket() }" />
+				<div class="payment_li_text">
+					<strong><!-- ko i18n: 'Cartão & Boleto'--><!-- /ko --></strong>
+					<span class="text-light"><!-- ko i18n: 'Bancário'--><!-- /ko --></span>
+				</div>
+				<img class="aqbank-arrow-right" data-bind="attr: { src: getArrowRight()}" />
+				<span class="change-text"></span>
+			</div>
+		</div>		
+		<div class="aqbank_type_payment_li">
+			<div class="aqbank_type_payment_li_box ticket no-border" data-bind="click: function(){ setPaymentMethod('ticket') }">
+				<input type="radio"
+					   name="aqbank_payment_type[method]"
+					   value="ticket"
+					   class="radio aqbank-type-radio"
+					   data-bind="attr: {'id': getCode() + '_aqbank_payment_ticket'}" style="display: none;"/>
+				<img class="aqbank-ico" data-bind="attr: { src: getIconBoleto()}" />
+				<div class="payment_li_text">
+					<strong><!-- ko i18n: 'Boleto'--><!-- /ko --></strong>
+					<span class="text-light"><!-- ko i18n: 'Bancário'--><!-- /ko --></span>
+				</div>
+				<img class="aqbank-arrow-right" data-bind="attr: { src: getArrowRight()}" />
+				<span class="change-text"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div style="clear: both;"></div>
+	
+	<div class="aqbank-box-integral">
+		
+		<div class="payment-method-content payment-method-content-cc">
+			<div id="aqbank_payment_card" class="aqbank_payment_card">
+				<form class="form" id="aqpago-form" action="#" method="post" data-bind="mageInit:
+					{ 'aqpago_register_validate':
+					  {
+						'context': context(),
+						'code': getCode()
+					  }
+					}">
+					<!-- ko template: 'Aqbank_Aqpago/payment/cc-form' --><!-- /ko -->				
+				</form>
+			</div>
+		</div>
+		
+		<div style="clear: both;"></div>
+		
+		<div class="payment-method-content payment-method-content-ticket">
+			<div class="aqbank_payment_boleto">
+				<form class="form" id="aqpago-form-boleto" action="#" method="post" data-bind="mageInit:
+					{ 'aqpago_boleto_register_validate':
+					  {
+						'context': context(),
+						'code': getCode()
+					  }
+					}">
+					<!-- ko template: 'Aqbank_Aqpago/payment/boleto' --><!-- /ko -->
+				</form>
+			</div>
+		</div>
+		
+		<div style="clear: both;"></div>
+		
+		<div class="payment-method-content payment-method-content-pix">
+			<div class="aqbank_payment_pix">
+				<form class="form" id="aqpago-form-pix" action="#" method="post" data-bind="mageInit:
+					{ 'aqpago_pix_register_validate':
+					  {
+						'context': context(),
+						'code': getCode()
+					  }
+					}">
+					<!-- ko template: 'Aqbank_Aqpago/payment/pix' --><!-- /ko -->
+				</form>
+			</div>
+		</div>
+		
+
+	</div>
+	
+</div>
+
+<div class="aqbank_resume_order">	
+	<div class="title">
+		<!-- ko i18n: 'RESUMO DO PEDIDO:'--><!-- /ko --><span class="order-number"></span>
+	</div>
+	<div class="grandtotal-resume">
+		<div class="grandtotal-box"></div>
+	</div>
+	<div class="resume-payment">
+		<div class="title">
+			<!-- ko i18n: 'DETALHES DO PAGAMENTO'--><!-- /ko -->
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="resume-payment-info">
+			
+			<div class="aqbank_payment_integral_box">
+				
+				<div class="li-form-payment li-form-payment-one">
+					<div class="li-flag-card">
+						<div class="middle-number-card"></div>
+					</div>
+					<div class="li-number-card">
+						<!-- ko i18n: 'FINAL'--><!-- /ko -->
+						<div id="one-middle-number-card" class="middle-number-card"></div>
+					</div>
+					<div class="li-amount-card">
+						<div class="amount-card"></div>
+						<span></span>
+					</div>
+				</div>
+				
+				<div class="li-form-payment li-form-payment-two">
+					<div class="li-flag-card">
+						<div class="middle-number-card"></div>
+					</div>
+					<div class="li-number-card">
+						<!-- ko i18n: 'FINAL'--><!-- /ko -->
+						<div id="two-middle-number-card" class="middle-number-card"></div>
+					</div>
+					<div class="li-amount-card">
+						<div class="amount-card"></div>
+						<span></span>
+					</div>
+				</div>
+				
+				<div class="li-form-payment li-form-payment-ticket">
+					<div class="li-flag-card">
+						<div class="middle-number-card">
+							<img data-bind="attr: { src: getIconBoleto()}" />
+						</div>
+					</div>
+					<div class="li-number-card">
+						<div class="middle-number-card"></div>
+					</div>
+					<div class="li-amount-card">
+						<div class="amount-card"></div>
+						<span></span>
+					</div>
+				</div>
+				
+				
+				<div class="li-form-payment-ticket-infos">
+					<div class="li-ticket-open" data-trigger="barcode">
+						<!-- ko i18n: 'OPEN'--><!-- /ko -->
+					</div>
+					
+					<div class="li-ticket-copy" data-bind="click: copyTicketCode">
+						<span class="li-ticket-ico">
+							<img class="icon-copy" data-bind="attr: { src: getIconCopy()}" />
+						</span>
+						<!-- ko i18n: 'COPIAR'--><!-- /ko -->
+					</div>
+					<div class="li-ticket-code"></div>
+					<div data-bind="mageInit: {
+							'Magento_Ui/js/modal/modal':{
+								'type': 'popup',
+								'title': 'Código de barras',
+								'trigger': '[data-trigger=barcode]',
+								'responsive': true,
+								'buttons': [{
+									text: jQuery.mage.__('Close'),
+									class: 'action primary checkout aqbank_place_order_button',
+									click: function () {
+										this.closeModal();
+									}
+								}]
+							}}">
+						<div class="content">
+							<div class="img-barcode"></div>
+						</div>
+					</div>
+					
+					<button data-role="review-save"
+							type="button"
+							data-bind="
+								click: openTicket,
+								attr: {
+									title: $t('OPEN TICKET')
+								}
+							"
+							class="action primary checkout aqbank_place_order_button"
+							>
+						<span data-bind="i18n: 'OPEN TICKET'"></span>
+					</button>
+				</div>
+				
+				<div class="li-form-payment-ticket-infos">
+					<div class="li-form-payment-ticket-title">
+						<!-- ko i18n: 'AGUARDANDO PAGAMENTO'--><!-- /ko -->
+					</div>
+					<div class="li-form-payment-ticket-text">
+						<!-- ko i18n: 'Mediante o pagamento, a compensação do boleto pode levar  até 2 dias úteis.'--><!-- /ko -->
+					</div>
+					
+					<div class="li-form-payment-ticket-contacts">
+						<div class="contacts-title">
+							<!-- ko i18n: 'VOCÊ SERÁ NOTIFICADO ATRAVÉS DESTES CONTATOS'--><!-- /ko -->
+						</div>
+						<div class="contacts-box">
+							<div class="contacts-box-li">
+								<span><img class="boleto-phone" data-bind="attr: { src: getIconPhone()}" /></span>
+								<span class="phone-text"></span>
+							</div>
+							<div class="contacts-box-li">
+								<span><img class="boleto-email" data-bind="attr: { src: getIconEmail()}" /></span>
+								<span class="email-text"></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="li-form-payment-ticket-alert">
+						<span>
+							<img class="ticket-alert-ico" data-bind="attr: { src: getIconAlert()}" />
+						</span>
+						<span class="ticket-alert-text">
+							<!-- ko i18n: 'Caso não consiga realizar o pagamento do boleto, o valor pago no cartão de credito será estornado.'--><!-- /ko -->
+						</span>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="title-status" style="text-align: center;">
+			<span class="order-status"></span>
+		</div>
+	</div>
+	
+	<div style="clear:both;"></div>
+	
+	<div class="address">
+		<div class="title"><!-- ko i18n: 'ENDEREÇO DE ENTREGA'--><!-- /ko --></div>
+		
+		<div class="resume-address">
+			<div class="resume-address-ico">
+				<div class="address-ico"></div>
+			</div>
+			<div class="resume-address-text"></div>
+		</div>
+	</div>
+	<div class="multi-actions">
+		<a data-role="review-save"
+				type="button"
+				data-bind="
+					attr: {
+						href: getMyOrdersUrl(),
+						title: $t('MY ORDERS')
+					}
+				"
+				class="action primary checkout aqbank_place_order_button"
+				>
+			<span data-bind="i18n: 'MY ORDERS'" style="position: relative;top: 5px;"></span>
+		</a>
+		<div style="clear:both;margin-bottom: 20px;"></div>
+	</div>
+</div>

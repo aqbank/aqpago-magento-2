@@ -1,0 +1,576 @@
+<fieldset  data-bind="attr: {class: 'fieldset card_one payment items ccard' + getCode(), id: 'payment_form_' + getCode()}">
+
+	<div style="display: none;">
+		<input type="hidden" name="payment[type_payment]">
+
+		<input type="hidden" name="payment[select_card]">
+		<input type="hidden" name="payment[card_one]">
+		<input type="hidden" name="payment[card_two]">
+
+		<input type="hidden" name="payment[one_cc_number]" data-bind="attr: {id: getCode() + '_one_cc_number'}">
+		<input type="hidden" name="payment[one_cc_owner]" data-bind="attr: {id: getCode() + '_one_cc_owner'}">
+		<input type="hidden" name="payment[one_cc_exp_month]" data-bind="attr: {id: getCode() + '_one_cc_exp_month'}">
+		<input type="hidden" name="payment[one_cc_exp_year]" data-bind="attr: {id: getCode() + '_one_cc_exp_year'}">
+		<input type="hidden" name="payment[one_cc_cid]" data-bind="attr: {id: getCode() + '_one_cc_cid'}">
+		<input type="hidden" name="payment[one_cc_document]" data-bind="attr: {id: getCode() + '_one_cc_document'}">
+		<input type="hidden" name="payment[one_cc_amount]" data-bind="attr: {id: getCode() + '_one_cc_amount'}">
+		<input type="hidden" name="payment[one_cc_installments]" data-bind="attr: {id: getCode() + '_one_cc_installments'}">
+		<input type="hidden" name="payment[one_cc_number_id]" data-bind="attr: {id: getCode() + '_one_cc_number_id'}">
+
+		<input type="hidden" name="payment[two_cc_number]" data-bind="attr: {id: getCode() + '_two_cc_number'}">
+		<input type="hidden" name="payment[two_cc_owner]" data-bind="attr: {id: getCode() + '_two_cc_owner'}">
+		<input type="hidden" name="payment[two_cc_exp_month]" data-bind="attr: {id: getCode() + '_two_cc_exp_month'}">
+		<input type="hidden" name="payment[two_cc_exp_year]" data-bind="attr: {id: getCode() + '_two_cc_exp_year'}">
+		<input type="hidden" name="payment[two_cc_cid]" data-bind="attr: {id: getCode() + '_two_cc_cid'}">
+		<input type="hidden" name="payment[two_cc_document]" data-bind="attr: {id: getCode() + '_two_cc_document'}">
+		<input type="hidden" name="payment[two_cc_amount]" data-bind="attr: {id: getCode() + '_two_cc_amount'}">
+		<input type="hidden" name="payment[two_cc_installments]" data-bind="attr: {id: getCode() + '_two_cc_installments'}">
+		<input type="hidden" name="payment[two_cc_number_id]" data-bind="attr: {id: getCode() + '_two_cc_number_id'}">
+		
+		<input type="hidden" name="payment[ticket_amount]" data-bind="attr: {id: getCode() + '_ticket_amount'}">
+		<input type="hidden" name="payment[ticket_amount_multiple]" data-bind="attr: {id: getCode() + '_ticket_amount_multiple'}">
+		
+		<input type="hidden" name="payment[one_modal_amount]">
+		<input type="hidden" name="payment[two_modal_amount]">
+	
+		<input type="hidden" name="payment[card_selected]">
+		<input type="hidden" name="payment[ticket_selected]">
+		<input type="hidden" name="payment[card_multi_selected]">
+		<input type="hidden" name="payment[ticket_mulit_selected]">
+	</div>
+
+	
+	<div class="box-select-card-title">
+		<img class="icon-card-clean" data-bind="attr: { src: getIconCardClean()}"  > <!-- ko i18n: 'Selecione o'--><!-- /ko --> <strong><!-- ko i18n: 'cartão'--><!-- /ko --></strong>
+	</div>
+	
+	<div class="box-select-card box-select-card-custom" data-bind="afterRender: savedCardsDetails"></div>
+	
+	<div class="aqbank_payment_integral">
+		<div class="aqbank_payment_integral_box">
+			<div id="one-li-form-payment" class="li-form-payment" style="display: none;">
+				<div class="li-position-card">
+					<img data-bind="attr: { src: getCardOne()}" />
+				</div>
+				<div class="li-number-card">
+					<div class="top"><!-- ko i18n: 'FINAL'--><!-- /ko --></div>
+					<div id="one-middle-number-card" class="middle-number-card"></div>
+				</div>
+				<div class="li-flag-card">
+					<div class="top">
+						&nbsp;
+					</div>
+					<div class="middle-number-card">
+						<img id="img-one" class="img-one" data-bind="attr: { src: getFlagMasterCard()}" />
+					</div>
+				</div>
+				<div class="li-installment-card">
+					<div class="top"><!-- ko i18n: 'PARCELAS'--><!-- /ko --></div>
+					<select  class="select input-text parcelas" data-bind="
+							attr:{id: getCode() + '_one_installments'},
+							event:{change: changeInstallmentOneCard()},
+							options: getNewInstallments(),
+							optionsValue: 'value',
+							optionsText: 'key',
+							value: 1,
+							valueUpdate:['afterkeydown','propertychange','input']">
+						
+					</select>
+				</div>
+				<div class="li-amount-card">
+					<div class="top"><!-- ko i18n: 'VALOR'--><!-- /ko --></div>
+					<div id="one-grand-total-view" class="amount-card"></div>
+				</div>
+				<img id="onecard-button-modal" class="edit-one" data-bind="attr: { src: getIconEdit()}" data-trigger="oneCard" />
+				<div id="one-card-bottom" class="bottom">
+					<strong></strong> <span></span>
+				</div>
+				<div class="text-edit">
+					<!-- ko i18n: 'VOCÊ PODE EDITAR O 1º PAGAMENTO'--><!-- /ko -->
+				</div>
+				
+			</div>
+			
+			
+			<div id="two-li-form-payment" class="li-form-payment" style="display: none;">
+				<div class="li-position-card">
+					<img data-bind="attr: { src: getCardTwo()}" />
+				</div>
+				<div class="li-number-card">
+					<div class="top"><!-- ko i18n: 'FINAL'--><!-- /ko --></div>
+					<div id="two-middle-number-card" class="middle-number-card"></div>
+				</div>
+				<div class="li-flag-card">
+					<div class="top">
+						&nbsp;
+					</div>
+					<div class="middle-number-card">
+						<img id="img-two" class="img-one" data-bind="attr: { src: getFlagMasterCard()}" />
+					</div>
+				</div>
+				<div class="li-installment-card">
+					<div class="top"><!-- ko i18n: 'PARCELAS'--><!-- /ko --></div>
+					<select  class="select input-text parcelas" data-bind="
+							attr:{id: getCode() + '_two_installments'},
+							 event:{change: changeInstallmentTwoCard()},
+							 options: getNewInstallments(),
+							 optionsValue: 'value',
+							 optionsText: 'key',
+							 value: 1,
+							 valueUpdate:['afterkeydown','propertychange','input']">
+						
+					</select>
+				</div>
+				<div class="li-amount-card">
+					<div class="top"><!-- ko i18n: 'VALOR'--><!-- /ko --></div>
+					<div id="two-grand-total-view" class="amount-card"></div>
+				</div>
+				<img id="twocard-button-modal" class="edit-one" data-bind="attr: { src: getIconEdit()}" data-trigger="twoCard"/>
+				<div id="two-card-bottom" class="bottom">
+					<strong></strong> <span></span>
+				</div>
+				<div class="text-edit">
+					<!-- ko i18n: 'VOCÊ PODE EDITAR O 2º PAGAMENTO'--><!-- /ko -->
+				</div>
+				
+			</div>
+			
+			<div id="three-li-form-payment" class="li-form-payment" style="display: none;">
+				<div class="li-position-card">
+					<img data-bind="attr: { src: getCardTwo()}" />
+				</div>
+				<div class="li-number-card">
+					<img data-bind="attr: { src: getIconBoleto()}" />
+				</div>
+				<div class="li-flag-card">
+					<div class="top">
+						&nbsp;
+					</div>
+					<div class="middle-number-card"></div>
+				</div>
+				<div class="li-installment-card">
+					<div class="top"><!-- ko i18n: 'PAGAR'--><!-- /ko --></div>
+					<div class="middle-text"><!-- ko i18n: 'Á VISTA'--><!-- /ko --></div>
+				</div>
+				<div class="li-amount-card">
+					<div class="top"><!-- ko i18n: 'VALOR'--><!-- /ko --></div>
+					<div id="ticket-grand-total-view" class="amount-card"></div>
+				</div>
+				<div id="ticket-card-bottom" class="bottom">
+					<strong>&nbsp;</strong>
+					<span></span>
+				</div>
+				<div class="text-edit">
+					<!-- ko i18n: 'PAGAMENTO VIA BOLETO BANCÁRIO'--><!-- /ko -->
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>	
+
+	<div class="card-box-all">
+	<fieldset class="fieldset aqbank-checkout">
+		<div class="card-box card-front">
+			<div class="background-card-front">
+				<div class="card-number">0000 0000 0000 00000</div>
+				<div class="card-valid">MM/AAAA</div>
+				<div class="card-name"></div>
+				<div class="card-flag">
+					<img id="img-flag-card" data-bind="attr: { src: getDefaultIssuers()}" style="display: none;" />
+				</div>
+			</div>
+			<div class="background-card-back">
+				<input type="text" id="card-code" value="***" placeholder="***" readonly maxlength="4" class="cvv-code" >
+			</div>
+		</div>
+	</fieldset>
+	
+	<fieldset class="fieldset aqpago-box-card aqpago-box-card-checkout">
+		
+		<div class="aqbank-box-parcelas padding-right-5">
+			<div class="aqbank-round-parcelas">
+				<div class="text-parcelas"><!-- ko i18n: 'TOTAL DE PARCELAS'--><!-- /ko --></div>
+				<div class="aqbank-buttons-parcelas">
+					<ul>
+						<li>
+							<span class="icon-sub"
+									data-bind="
+									click: setOrderSub('aqpago-select-installments'),
+									attr: {title: $t('Menos')},
+									"
+								></span>
+						</li>
+						<li class="number number-aqpago_installments">
+							<select class="select input-text card-select aqpago-select-installments"
+								data-bind="
+								attr:{id: getCode() + '_installments'},
+								 options: getNewInstallments(),
+								 optionsValue: 'value',
+								 optionsText: 'key',
+								 value: 1,
+								 valueUpdate:['afterkeydown','propertychange','input']">						
+							</select>						
+						</li>
+						<li>
+							<span class="icon-plus"
+									data-bind="
+									click: setOrderSum('aqpago-select-installments'),
+									attr: {title: $t('Mais')},
+									"								
+								></span>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div id="aqbank-valor-intergal" class="aqbank-box-parcelas padding-left-5">
+			<div class="aqbank-box-price">
+				<div class="text-parcelas"><!-- ko i18n: 'TOTAL A SER PAGO'--><!-- /ko --></div>
+				<span class="aqbank-card-grand-total" data-bind="text: getGrandTotalCheckout()"></span>
+			</div>
+		</div>
+		
+		<div id="aqbank-multi-pagamento-valor" class="aqbank-box-parcelas aqbank-multi-pagamento-valor">
+			<div class="aqbank-round-parcelas">
+				<span class="multi-valor-tooltip">
+					<a href="#" class="tooltip-toggle">
+						<img data-bind="attr: { src: getIconToolTip()}" class="img-tool-tip"/>
+					</a>
+					<span class="tooltip-content"><!-- ko i18n: 'Digite o valor que irá pagar neste cartão'--><!-- /ko --></span>
+				</span>
+				<div class="text-parcelas"><!-- ko i18n: 'Valor do Pagamento'--><!-- /ko --></div>
+				<span class="currency-valor">R$</span>
+				<input type="tex" data-bind="attr:{id: getCode() + '_cc_multiple_val'},value: getGrandTotalSubdivide()" class="aqbank-input-valor" />
+				
+				<img data-bind="attr: { src: getIconEdit()}, click: setAqbankInputValor()" class="img-edit" />
+				
+			</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field field-name-lastname required">
+			<label data-bind="attr: {for: getCode() + '_cc_number'}" class="label">
+				<span><!-- ko i18n: 'Card Number'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" step="0" maxlength="19" name="payment[cc_number]" class="input-text" value=""
+					   placeholder="0000 0000 0000 0000" data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_number',
+										title: $t('Card Number'),
+										placeholder:  $t('0000 0000 0000 0000'),
+										'data-container': getCode() + '-cc-number',
+										'data-validate': JSON.stringify({'required':true})},
+								  enable: isActive($parents),
+								  value: creditCardNumber,
+								  valueUpdate: 'keyup' " />
+			</div>
+		</div>
+		
+		
+		<div>
+		
+			<div class="field valid_month_checkout required">
+				<label for="valid_month" class="label">
+					<span><!-- ko i18n: 'Validate'--><!-- /ko --></span>
+				</label>
+				<div class="control"> 
+						
+						<select name="payment[cc_exp_month]" id="valid_month"
+								class="select select-month input-text card-select valid_month"
+								data-bind="attr: {id: getCode() + '_expiration', 'data-container': getCode() + '-cc-month', 'data-validate': JSON.stringify({required:true, 'validate-cc-exp':'#' + getCode() + '_expiration_yr'})},
+											enable: isActive($parents),
+											options: getCcMonthsValues(),
+											optionsValue: 'value',
+											optionsText: 'month',
+											optionsCaption: $t('Month'),
+											value: creditCardExpMonth">
+						</select>
+						
+						<select name="payment[cc_exp_year]" id="valid_year"
+								class="select select-year card-select valid_year"
+								data-bind="attr: {id: getCode() + '_expiration_yr', 'data-container': getCode() + '-cc-year', 'data-validate': JSON.stringify({required:true})},
+										   enable: isActive($parents),
+										   options: getCcYearsValues(),
+										   optionsValue: 'value',
+										   optionsText: 'year',
+										   optionsCaption: $t('Year'),
+										   value: creditCardExpYear">
+						</select>
+				
+				</div>
+			</div>
+			
+			<div class="field card_cvv_img">
+				<img class="aqbank-card-cvv" data-bind="attr: { src: getIconCvvImage()}" />
+			</div>
+			
+			<div class="field field-name-code-checkout required">
+				<label data-bind="attr: {for: getCode() + '_cc_cid'}" class="label">
+					<span><!-- ko i18n: 'Code'--><!-- /ko --></span>
+				</label>
+				<div class="control">
+					<input type="number"
+						   step="0"
+						   maxlength="4"
+						   autocomplete="off"
+						   class="input-number cvv"
+						   name="payment[cc_cid]"
+						   maxlength="4"
+						   value=""
+						   data-bind="
+								event: { 
+									keyup: onCodekeypress,
+									focusin: onCodehasFocus, 
+									focusout: onCodeFocusOut 
+								},
+								attr: {id: getCode() + '_cc_cid',
+								title: $t('Codigo *'),
+								'data-container': getCode() + '-cc-cvv',
+								'data-validate': JSON.stringify({'required-number':true, 'validate-card-cvv':'#' + getCode() + '_cc_type'})},
+								enable: isActive($parents),
+								value: creditCardVerificationNumber,
+								valueUpdate: 'keyup' " maxlength="4"/>			
+				</div>
+			</div>
+			
+		</div>
+		
+		<div style="clear: both"></div>
+		
+		<div class="field field-name-name_card required">
+			<label data-bind="attr: {for: getCode() + '_cc_owner'}" class="label">
+				<span><!-- ko i18n: 'Card Owner'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input style="text-transform: uppercase;" type="text" name="payment[cc_owner]" class="input-text" value=""
+					   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_owner',
+										title: $t('Card Owner'),
+										placeholder:  $t('Card Owner'),
+										'data-container': getCode() + '-cc-owner',
+										'data-validate': JSON.stringify({'required':true})},
+								  enable: isActive($parents),
+								  value: creditCardOwner,
+								  valueUpdate: 'keyup' "/>
+			</div>
+		</div>
+
+		<div style="clear:both;"></div>
+		
+		<div class="field field-not" id="div-not">
+			<div class="control">
+				<input type="checkbox" name="payment[not]" id="not" class="not" value="1">
+				<span><!-- ko i18n: 'SOU TITULAR DO CARTÃO'--><!-- /ko --></span>
+			</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field field-name-documento documento-one required">
+			<label data-bind="attr:{for: getCode() + '_documento'}" class="label">
+				<span><!-- ko i18n: 'CPF dono do cartão'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" name="payment[cc_documento]" data-bind="attr:{id: getCode() + '_documento'}" placeholder="000.000.000-00" title="CPF dono do cartão" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+			</div>
+		</div>
+		
+		
+		
+		
+		<!-- ko if: (is3DsEnabled() || isDebitEnabled())-->
+		<div class="field number required" data-bind="attr: {'data-validate': JSON.stringify({'required':true})}">
+			<div class="checkbutton">
+				<label data-bind="attr: {for: getCode() + '_cc'}" class="label">
+					<span><!-- ko i18n: 'Credit'--><!-- /ko --></span>
+				</label>
+				<div class="control" style="display:inline">
+					<input id="aqpago_cc" type="checkbox" name="payment[cc]" class="input-text cc"
+						   style="width:auto !important" value=""
+						   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc',
+										title: $t('Credit Authentication'),
+										'data-container': getCode() + '-cc'},
+								  enable: isActive($parents),
+								  value: creditCard,
+								  valueUpdate: 'input',
+								  checked: creditCard"/>
+				</div>
+			</div>
+
+			<!-- ko if: (is3DsEnabled())-->
+			<div class="checkbutton" data-bind="visible: is3DsEnabled()">
+				<label data-bind="attr: {for: getCode() + '_cc_3ds'}" class="label">
+					<span><!-- ko i18n: 'Credit 3DS'--><!-- /ko --></span>
+				</label>
+				<div class="control" style="display:inline">
+					<input id="aqpago_cc_3ds" type="checkbox" name="payment[cc_3ds]" class="input-text cc_3ds"
+						   style="width:auto !important" value=""
+						   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_3ds',
+										title: $t('Credit Authentication'),
+										'data-container': getCode() + '-cc-3ds'},
+								  enable: isActive($parents) && is3DsEnabled(),
+								  value: creditCard3Ds,
+								  valueUpdate: 'input',
+								  checked: creditCard3Ds"/>
+				</div>
+			</div>
+			<!-- /ko -->
+
+			<!-- ko if: (isDebitEnabled())-->
+			<div class="checkbutton" data-bind="visible: isDebitEnabled()">
+				<label data-bind="attr: {for: getCode() + '_cc_debit'}" class="label">
+					<span><!-- ko i18n: 'Debit 3DS'--><!-- /ko --></span>
+				</label>
+				<div class="control" style="display:inline">
+					<input id="aqpago_cc_debit" type="checkbox" name="payment[cc_debit]" class="input-text debit"
+						   style="width:auto !important"
+						   value=""
+						   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_debit',
+										title: $t('Debit Card'),
+										'data-container': getCode() + '-cc-debit'},
+								  enable: isActive($parents) && isDebitEnabled(),
+								  value: debitCard,
+								  valueUpdate: 'input',
+								  checked: debitCard"/>
+				</div>
+			</div>
+			<!-- /ko -->
+		</div>
+		<!-- /ko -->		
+		
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+		
+		
+        <div class="actions-toolbar grand-total" style="display: none;">
+			<!-- ko i18n: 'Você vai pagar'--><!-- /ko -->
+			
+			
+			<div class="aqbank-grandtotal-card aqbank-relative" >
+				<span data-bind="text: getGrandTotalCheckout()"></span>
+				<div id="parcela-integral" class="aqbank-total-parcelas">/ 1x</div>
+			</div>
+			
+		</div>
+		
+        <div id="submit-action" class="actions-toolbar" style="display: none;">
+			<button data-role="review-save"
+					type="submit"
+					data-bind="
+					attr: {title: $t('Place Order')},
+					enable: (getCode() == isChecked()),
+					click: placeOrder,
+					css: {disabled: !isPlaceOrderActionAllowed()}
+					"
+					class="action primary checkout aqbank_place_order_button"
+					disabled>
+				<img class="aqbank-icon-button" data-bind="attr: { src: getIconOrderButton()}" />
+				<span data-bind="i18n: 'Place Order'"></span>
+			</button>
+        </div>
+		
+        <div id="one-action" class="actions-toolbar" style="display: none;">
+			<button data-role="review-save"
+					type="button"
+					data-bind="
+						attr: {title: $t('PRÓXIMO')},
+						click: setCardData('one')
+					"
+					class="action primary checkout aqbank_place_order_button"
+					>
+				<span data-bind="i18n: 'PRÓXIMO'"></span>
+			</button>
+        </div>
+		
+        <div id="multi-actions" class="actions-toolbar multi-actions" style="display: none;">
+			<button data-role="review-save"
+					type="button"
+					data-bind="
+						attr: {title: $t('PRÓXIMO CARTÃO')},
+						click: setCardData('one')
+					"
+					class="action primary checkout aqbank_place_order_button"
+					>
+				<span data-bind="i18n: 'PRÓXIMO CARTÃO'"></span>
+			</button>
+        </div>	
+		
+        <div id="multi-actions-two" class="actions-toolbar multi-actions" style="display: none;">
+			<button data-role="review-save"
+					type="button"
+					data-bind="
+						attr: {title: $t('PRÓXIMO')},
+						click: setCardData('two')
+					"
+					class="action primary checkout aqbank_place_order_button"
+					>
+				<span data-bind="i18n: 'PRÓXIMO'"></span>
+			</button>
+        </div>
+		
+        <div id="multi-actions-one-ticket" class="actions-toolbar multi-actions" style="display: none;">
+			<button data-role="review-save"
+					type="button"
+					data-bind="
+						attr: {title: $t('PRÓXIMO')},
+						click: setCardData('one')
+					"
+					class="action primary checkout aqbank_place_order_button"
+					>
+				<span data-bind="i18n: 'PRÓXIMO'"></span>
+			</button>
+        </div>
+		
+		<div style="clear:both;margin-bottom: 20px;"></div>
+		
+    </fieldset>	
+	
+	</div>
+	
+	<div class="aqbank_custom_informations">
+		<!-- ko template: 'Aqbank_Aqpago/payment/resume/address' --><!-- /ko -->
+		<!-- ko template: 'Aqbank_Aqpago/payment/resume/shipping' --><!-- /ko -->
+		<!-- ko template: 'Aqbank_Aqpago/payment/resume/totals' --><!-- /ko -->
+	</div>
+	
+	<div id="button-finished" class="actions-toolbar multi-actions" style="display: none;">
+		<button data-role="review-save"
+				type="button"
+				data-bind="
+					attr: {title: $t('FINALIZAR PEDIDO')},
+					click: finisheOrder
+				"
+				class="action primary checkout aqbank_place_order_button"
+				>
+			<span data-bind="i18n: 'FINALIZAR PEDIDO'"></span>
+		</button>
+		<div style="clear:both;margin-bottom: 20px;"></div>
+	</div>
+	
+</fieldset>
+
+<!-- ko template: 'Aqbank_Aqpago/payment/modal/first-card' --><!-- /ko -->
+<!-- ko template: 'Aqbank_Aqpago/payment/modal/secund-card' --><!-- /ko -->

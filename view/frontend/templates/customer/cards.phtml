@@ -1,0 +1,104 @@
+<div class="form-card-edit">
+	<div class="box-select-card box-select-card-custom">
+
+
+
+
+		<?php $cardsrecords = $block->getCustomCollection(); ?>
+		<?php if ($cardsrecords && sizeof($cardsrecords)): ?>
+			
+			<?php foreach ($cardsrecords as $card): ?>
+				<div id="card-box-<?= $card->getId() ?>"  class="box-select-card-li box-select-card-two two-li-form-payment">
+					<div class="box-select-card-float box-select-card-li-flag">
+						<img class="img-one flag-<?= strtolower($card->getFlag()) ?>" src="<?= $block->setFlagImage( $card->getFlag() ) ?>">
+					</div>
+					<div class="box-select-card-float box-select-card-li-number">
+						<?=  $block->setCardMask( $card->getNumberCard() ) ?>
+						<span id="card-<?= $card->getId() ?>" class="remove-card">x Remover</span>
+						
+						<div id="modal-card-remove-<?= $card->getId() ?>" class="modal-card-remove">
+							<h3><?= __('Você tem certeza que gostaria, de') ?> <strong><?= __('Remover') ?></strong> <?= __('o cartão') ?></h3>
+							
+							<div class="box-li-card-new">
+								<div class="box-li-card">
+									<div class="box-li-card-new-flag">
+										<img class="img-one flag-<?= strtolower($card->getFlag()) ?>" src="<?= $block->setFlagImage( $card->getFlag() ) ?>">
+									</div>
+									<div class="box-li-card-new-number">
+										<span><?=  $block->setCardMask( $card->getNumberCard() ) ?></span>
+									</div>
+								</div>
+							</div>
+							
+							<div class="box-li-buttons">
+								<button id="remove-<?= $card->getId() ?>" class="remove-button">
+									<span><?= __('REMOVER') ?></span>
+								</button>
+								<button class="back-button">
+									<span><?= __('VOLTAR') ?></span>
+								</button>
+							</div>
+							
+						</div>
+					</div>
+					<div class="box-select-card-float box-select-card-li-arrow">
+						<img src="<?= $this->getViewFileUrl('Aqbank_Aqpago::images/icons/arrow-right.svg') ?>">
+					</div>
+				</div>
+			<?php endforeach; ?>
+			
+			<script>
+				require([
+					'jquery',
+					'Magento_Ui/js/model/messageList',
+					'mage/translate',
+					'Magento_Customer/js/customer-data',
+					'domReady!'
+				], function($, messageList, $t, customerData) {
+					$(document).ready(function(){
+						$('.remove-card').click(function(){
+							var cardId = $(this).attr('id').replace('card-', '');
+							
+							$('.modal-card-remove').fadeOut();
+							$('#modal-card-remove-'+cardId).fadeIn('100');
+						});
+						
+						$('.back-button').click(function(){
+							$('.modal-card-remove').fadeOut();
+						});
+						
+						$('.remove-button').click(function(){
+							var cardId = $(this).attr('id').replace('remove-', '');
+							
+							console.log( cardId );
+							$.ajax({
+								showLoader: true,
+								url: "<?= $block->getUrl('aqbank/ajax/removecard') ?>",
+								data: {
+									cardId: cardId
+								},
+								type: "POST"
+							}).done(function(result) {
+								
+								$('.modal-card-remove').fadeOut();
+								
+								if(result.success){
+									$('#card-box-'+cardId).remove();
+								}
+								
+							}).fail(function (xhr, status, error) {
+								var err = eval("(" + xhr.responseText + ")");
+								messageList.addErrorMessage({ message: $t( err ) });
+							});
+						});
+					});
+					
+					
+				});
+			</script>
+		<?php else: ?>
+			<div class="message info empty"><span><?php echo __('No any record.'); ?></span></div>
+		<?php endif ?>
+		
+	</div>
+</div>

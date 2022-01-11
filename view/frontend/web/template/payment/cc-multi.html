@@ -1,0 +1,251 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<fieldset data-bind="attr: {class: 'fieldset payment items multi_ccard ' + getCode(), id: 'payment_form_multi' + getCode()}">
+	<fieldset class="fieldset aqbank-checkout">
+		<div class="card-box card-front">
+			<div class="background-card-front">
+				<div id="card-number-multi" class="card-number">0000 0000 0000 00000</div>
+				<div id="card-valid-multi" class="card-valid">MM/AAAA</div>
+				<div id="card-name-multi" class="card-name">Fulano de tal</div>
+				<div class="card-flag">
+					<img id="img-flag-card-multi" data-bind="attr: { src: getDefaultIssuers()}" />
+				</div>
+			</div>
+			<div class="background-card-back">
+				<input type="text" id="card-code-multi" value="***" placeholder="***" readonly maxlength="4" class="cvv-code" >
+			</div>
+		</div>
+	</fieldset>
+	
+	<fieldset class="fieldset aqpago-box-card aqpago-box-card-checkout">
+		
+		<div class="aqbank-box-parcelas">
+			<div class="aqbank-round-parcelas">
+				<div class="text-parcelas"><!-- ko i18n: 'Parcela do cartão'--><!-- /ko --></div>
+				<div class="aqbank-buttons-parcelas">
+					<ul>
+						<li>
+							<span class="icon-sub"
+									data-bind="
+									attr: {title: $t('Menos')},
+									click: function(){setOrderSub( 'aqpago_installments' )}
+									"
+								></span>
+						</li>
+						<li class="number number-aqpago_installments">
+							<select class="select input-text card-select aqpago-select-installments" id="number_installments"
+								data-bind="
+									value: numberInstallments,
+									valueUpdate:['afterkeydown','propertychange','input']">
+								<option value="1">1x</option>
+								<option value="2">2x</option>
+								<option value="3">3x</option>
+								<option value="4">4x</option>
+								<option value="5">5x</option>
+								<option value="6">6x</option>
+								<option value="7">7x</option>
+								<option value="8">8x</option>
+								<option value="9">9x</option>
+								<option value="10">10x</option>
+								<option value="11">11x</option>
+								<option value="12">12x</option>
+							</select>						
+						</li>
+						<li>
+							<span class="icon-plus"
+									data-bind="
+									attr: {title: $t('Mais')},
+									click: function(){setOrderSum( 'aqpago_installments' )}
+									"								
+								></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="aqbank-box-parcelas aqbank-multi-pagamento-valor">
+			<div class="aqbank-round-parcelas">
+				<span class="multi-valor-tooltip">
+					<a href="#" class="tooltip-toggle">
+						<img data-bind="attr: { src: getIconToolTip()}" class="img-tool-tip"/>
+					</a>
+					<span class="tooltip-content"><!-- ko i18n: 'Digite o valor que irá pagar neste cartão'--><!-- /ko --></span>
+				</span>
+				<div class="text-parcelas"><!-- ko i18n: 'Valor do Pagamento'--><!-- /ko --></div>
+				<span class="currency-valor">R$</span>
+				<input type="tex" data-bind="value: getGrandTotalSubdivide()" class="aqbank-input-valor" />
+				
+				<img data-bind="attr: { src: getIconEdit()}, click: setAqbankInputValor()" class="img-edit" />
+				
+			</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field required">
+			<label data-bind="attr: {for: getCode() + '_multi_cc_number'}" class="label">
+				<span><!-- ko i18n: 'Card Number'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" step="0" maxlength="19" name="payment[cc_number]" class="input-text" value=""
+					   placeholder="0000 0000 0000 0000" data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_multi_cc_number',
+										title: $t('Card Number'),
+										placeholder:  $t('0000 0000 0000 0000'),
+										'data-container': getCode() + '-multi-cc-number',
+										'data-validate': JSON.stringify({'required':true})},
+								  enable: isActive($parents)
+								" />
+			</div>
+		</div>
+		
+		<div class="field field-name-name_card required">
+			<label data-bind="attr: {for: getCode() + '_multi_cc_owner'}" class="label">
+				<span><!-- ko i18n: 'Card Owner'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input style="text-transform: uppercase;" type="text" name="payment[cc_owner]" class="input-text" value=""
+					   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_multi_cc_owner',
+										title: $t('Card Owner'),
+										placeholder:  $t('Card Owner'),
+										'data-container': getCode() + '-cc-owner',
+										'data-validate': JSON.stringify({'required':true})},
+								  enable: isActive($parents) "/>
+			</div>
+		</div>
+		
+		<div class="field valid_month_checkout required">
+			<label for="valid_month" class="label">
+				<span><!-- ko i18n: 'Validate'--><!-- /ko --></span>
+			</label>
+			<div class="control"> 
+					
+					<select name="payment[cc_exp_month]" id="valid_month"
+							class="select select-month input-text card-select valid_month"
+							data-bind="attr: {id: getCode() + '_multi_expiration', 'data-container': getCode() + '-multi-cc-month', 'data-validate': JSON.stringify({required:true, 'validate-cc-exp':'#' + getCode() + '_multi_expiration_yr'})},
+										enable: isActive($parents),
+										options: getCcMonthsValues(),
+										optionsValue: 'value',
+										optionsText: 'month',
+										optionsCaption: $t('Month')">
+					</select>
+					
+					<select name="payment[cc_exp_year]" id="valid_year"
+							class="select select-year card-select valid_year"
+							data-bind="attr: {id: getCode() + '_expiration_yr', 'data-container': getCode() + '-cc-year', 'data-validate': JSON.stringify({required:true})},
+									   enable: isActive($parents),
+									   options: getCcYearsValues(),
+									   optionsValue: 'value',
+									   optionsText: 'year',
+									   optionsCaption: $t('Year'),
+									   value: creditCardExpYear">
+					</select>
+			
+			</div>
+		</div>
+		
+		<div class="field field-name-code-checkout required">
+			<label for="code" class="label">
+				<span><!-- ko i18n: 'Code'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="number"
+					   step="0"
+					   maxlength="4"
+					   autocomplete="off"
+					   class="input-number cvv"
+					   name="payment[cc_cid]"
+					   maxlength="4"
+					   value=""
+					   data-bind="
+							event: { 
+								keyup: onCodekeypress,
+								focusin: onCodehasFocus, 
+								focusout: onCodeFocusOut 
+							},
+							attr: {id: getCode() + '_multi_cc_cid',
+							title: $t('Code'),
+							'data-container': getCode() + '-multi-cc-cvv',
+							'data-validate': JSON.stringify({'required-number':true, 'validate-card-cvv':'#' + getCode() + '_multi_cc_type'})},
+							enable: isActive($parents)"/>			
+			</div>
+		</div>
+
+		<div style="clear:both;"></div>
+		
+		<div class="field field-not" id="div-not">
+			<div class="control">
+				<input type="checkbox" name="payment[notOne]" id="notOne" class="not" value="1">
+				<span><!-- ko i18n: 'SOU TITULAR DO CARTÃO'--><!-- /ko --></span>
+			</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field field-name-documento documento-multi-one required">
+			<label for="multi_documento" class="label">
+				<span><!-- ko i18n: 'CPF dono do cartão'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" name="payment[documento]" id="multi_documento" placeholder="000.000.000-00" title="CPF dono do cartão" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+			</div>
+		</div>
+		
+		<!-- ko if: (hasInstallments())-->
+		<div id="multi_installments" class="field required aqbank-aqpago-none"
+			 data-bind="attr: {id: getCode() + '_multi_installments_div'}, visible: getInstallments().length > 0">
+			<label data-bind="attr: {for: getCode() + '_installments'}" class="label">
+				<span><!-- ko text: $t('Installments')--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<select class="select installments"
+						name="payment[number_of_installments]"
+						data-bind="attr: {id: getCode() + '_multi_installments', 'data-container': getCode() + '-multi-installments', 'data-validate': JSON.stringify({required:true})},
+								 enable: isActive($parents),
+								 options: getInstallments(),
+								 optionsValue: 'value',
+								 optionsText: 'key',
+								 optionsCaption: $t('Choose a number of installments'),
+								 valueUpdate:['afterkeydown','propertychange','input']"
+						data-validate="{required:true}">
+				</select>
+			</div>
+		</div>
+		<!-- /ko -->
+		
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+		
+        <div class="actions-toolbar multi-actions">
+			<button data-role="review-save"
+					type="button"
+					data-bind="
+						attr: {title: $t('PRÓXIMO CARTÃO')},
+						click: placeCard
+					"
+					class="action primary checkout aqbank_place_order_button"
+					>
+				<span data-bind="i18n: 'PRÓXIMO CARTÃO'"></span>
+			</button>
+        </div>
+	</fieldset>
+</fieldset>

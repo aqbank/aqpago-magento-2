@@ -1,0 +1,1096 @@
+/* Aqpago Custom Css */
+@font-face {
+	font-family: 'IsidoraSans-Light';
+	src: url('../fonts/IsidoraSans-Light.eot');
+	src: url('../fonts/IsidoraSans-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Light.woff2') format('woff2'), url('../fonts/IsidoraSans-Light.woff') format('woff'), url('../fonts/IsidoraSans-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Medium';
+	src: url('../fonts/IsidoraSans-Medium.eot');
+	src: url('../fonts/IsidoraSans-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Medium.woff2') format('woff2'), url('../fonts/IsidoraSans-Medium.woff') format('woff'), url('../fonts/IsidoraSans-Medium.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Regular';
+	src: url('../fonts/IsidoraSans-Regular.eot');
+	src: url('../fonts/IsidoraSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Regular.woff2') format('woff2'), url('../fonts/IsidoraSans-Regular.woff') format('woff'), url('../fonts/IsidoraSans-Regular.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Bold';
+	src: url('../fonts/IsidoraSans-Bold.eot');
+	src: url('../fonts/IsidoraSans-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Bold.woff2') format('woff2'), url('../fonts/IsidoraSans-Bold.woff') format('woff'), url('../fonts/IsidoraSans-Bold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-SemiBold';
+	src: url('../fonts/IsidoraSans-SemiBold.eot');
+	src: url('../fonts/IsidoraSans-SemiBold.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-SemiBold.woff2') format('woff2'), url('../fonts/IsidoraSans-SemiBold.woff') format('woff'), url('../fonts/IsidoraSans-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Black';
+	src: url('../fonts/IsidoraSans-Black.eot');
+	src: url('../fonts/IsidoraSans-Black.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Black.woff2') format('woff2'), url('../fonts/IsidoraSans-Black.woff') format('woff'), url('../fonts/IsidoraSans-Black.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+select[readonly] {
+  pointer-events: none;
+  touch-action: none;
+}
+
+#checkout {
+  /*
+.inputs-field-card {
+	display: none;
+} */
+  /*
+.page-title {
+	font-family: 'IsidoraSans-SemiBold';
+	color: #881eb1;
+} */
+  /*
+.aqpago-box-card-checkout .field-name-documento,
+.aqpago-box-card-checkout .field-name-documento .control {
+	display: contents;
+} */;
+}
+
+#checkout .aqpago-field-card {
+	float: right !important;
+}
+
+#checkout .aqpago-field-input {
+	float: left !important;
+}
+
+#checkout .title-text {
+	font-size: 30px !important;
+}
+
+#checkout .title-icon-card img {
+	height: 30px;
+}
+
+#checkout .aqpago-icon-button img {
+	height: 20px;
+	margin-right: 10px;
+	position: relative;
+	top: 3px;
+}
+
+#checkout .subtitle-card {
+	text-align: center;
+}
+
+#checkout .aqpago-box-address {
+	width: 100% !important;
+}
+
+#checkout .aqpago-box-card,
+#checkout .aqpago-box-boleto {
+	max-width: 500px;
+	padding: 0px 10px;
+}
+
+#checkout .payment-method-content {
+	margin-top: 20px;
+}
+
+#checkout .payment-method-content-cc {
+	width: 100%;
+}
+
+#checkout .aqbank_payment_title {
+	display: flex;
+	justify-content: center;
+}
+
+#checkout .aqpago-box-card .legend {
+	font-family: 'IsidoraSans-SemiBold';
+	font-size: 35px;
+	border: 0px;
+	margin: 0px;
+}
+
+#checkout .aqpago-box-card .subtitle-card {
+	font-family: 'IsidoraSans-Regular';
+}
+
+#checkout .card-box {
+	position: relative;
+}
+
+#checkout .card-box span {
+	font-family: 'IsidoraSans-SemiBold';
+	color: #fff;
+}
+
+#checkout .card-box .card-info {
+	position: absolute;
+	top: 115px;
+	left: 0px;
+	width: 400px;
+}
+
+#checkout .box-number {
+	text-align: center;
+}
+
+#checkout .card-info .card-owner {
+	left: 10%;
+}
+
+#checkout .card-owner {
+	width: 173px;
+	font-weight: bold;
+}
+
+#checkout .card-number {
+	font-family: 'IsidoraSans-Medium';
+	font-size: 18px;
+	font-weight: 300;
+	position: absolute;
+	top: 75px;
+	left: 40px;
+	width: auto;
+}
+
+#checkout .card-valid {
+	font-family: 'IsidoraSans-Medium';
+	font-size: 16px;
+	display: flex;
+	position: absolute;
+	top: 100px;
+	left: 130px;
+	width: 110px;
+}
+
+#checkout .card-flag img {
+	position: absolute;
+	bottom: 45px;
+	right: 20px;
+	height: 20px;
+	padding: 0px 5px;
+}
+
+#checkout .card-flag .hipercard {
+	height: 30px;
+}
+
+#checkout .card-name {
+	font-family: 'IsidoraSans-Medium';
+	font-size: 15px;
+	position: absolute;
+	top: 140px;
+	left: 40px;
+	display: flex;
+}
+
+#checkout .card-cvv {
+	display: flex;
+}
+
+#checkout .cvv-code {
+	background: #fff !important;
+	width: 50px  !important;
+	height: 20px  !important;
+	position: absolute !important;
+	top: 70px !important;
+	right: 40px !important;
+	color: #000 !important;
+}
+
+#checkout .box-owner-valid {
+	margin-top: 25px;
+}
+
+#checkout .card-month,
+#checkout .card-year {
+	width: 40px;
+	float: right;
+	font-weight: bold;
+	font-size: 18px;
+	position: relative;
+	top: -5px;
+}
+
+#checkout .card-year {
+	width: 71px;
+	right: 18px;
+}
+
+#checkout .card-barra {
+	float: right;
+	margin-left: 3px;
+	margin: 0px 3px 0px 3px;
+	font-size: 29px !important;
+	font-family: IsidoraSans-SemiBold, Isidora Sans;
+	font-weight: 600;
+	color: #ffffff;
+	position: relative;
+	top: -12px;
+	right: 13px;
+}
+
+#checkout .aqpago-list .card-barra {
+	right: 20px;
+}
+
+#checkout .card-select {
+	float: left;
+	width: 45%;
+}
+
+#checkout .valid_month {
+	margin-right: 10%;
+}
+
+#checkout .field-name-postcode {
+	width: 45%;
+}
+
+#checkout .label-postcode {
+	position: relative;
+}
+
+#checkout .img-load-aqpago {
+	display: none;
+	position: absolute;
+	top: -10px;
+	left: 45px;
+	width: 30px;
+}
+
+#checkout .card-cvv {
+	position: absolute;
+	top: 90px;
+	right: 20px;
+	width: 100px;
+}
+
+#checkout .card-code {
+	color: #000 !important;
+	background: #ffffff  !important;
+	height: 30px !important;
+	width: 85% !important;
+	font-size: 22px;
+}
+
+#checkout .card-front,
+#checkout .card-back-svg,
+#checkout .background-card-front,
+#checkout .background-card-back {
+	-webkit-transition-duration: 0.9s;
+	-moz-transition-duration: 0.9s;
+	-o-transition-duration: 0.9s;
+	transition-duration: 0.9s;
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	transition-property: transform;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+#checkout .card-front .card-back-svg,
+#checkout .card-front .background-card-back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+#checkout .card-back .card-svg,
+#checkout .card-back .background-card-front {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+#checkout .field-name-address,
+#checkout .field-name-number {
+	float: left;
+}
+
+#checkout .field-name-address {
+	width: 70% !important;
+}
+
+#checkout .field-name-number {
+	width: 25% !important;
+	margin-left: 5% !important;
+}
+
+#checkout .field-name-complement,
+#checkout .field-name-district,
+#checkout .field-name-city,
+#checkout .field-name-state {
+	width: 45%;
+	float: left;
+}
+
+#checkout .field-name-complement,
+#checkout .field-name-city {
+	margin-right: 10% !important;
+}
+
+#checkout .field-name-valid_month,
+#checkout .field-name-code {
+	width: 55%;
+	float: left;
+}
+
+#checkout .field-name-code {
+	width: 35%;
+	margin-right: 5%!important;
+}
+
+#checkout .field-name-valid_month {
+	margin-right: 5% !important;
+}
+
+#checkout .card-box input::placeholder,
+#checkout .card-box select::placeholder {
+	color: #fff;
+	opacity: 1;
+}
+
+#checkout .card-box input:-ms-input-placeholder,
+#checkout .card-box select:-ms-input-placeholder {
+	color: #fff;
+}
+
+#checkout .card-box input::-ms-input-placeholder,
+#checkout .card-box select::-ms-input-placeholder {
+	color: #fff;
+}
+
+#checkout .card-code::placeholder {
+	color: #000 !important;
+	opacity: 1;
+}
+
+#checkout .card-code:-ms-input-placeholder {
+	color: #000 !important;
+}
+
+#checkout .card-code::-ms-input-placeholder {
+	color: #000 !important;
+}
+
+#checkout .card-info select,
+#checkout .card-info .card-owner {
+	font-size: 25px;
+	position: relative;
+	top: -5px;
+}
+
+#checkout .aqpago-box-card input,
+#checkout .aqpago-box-card select {
+	font-family: 'IsidoraSans-SemiBold';
+	font-size: 17px;
+	height: 50px;
+	border: 1px solid #d7d7d7 !important;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	display: flex;
+	padding: 10px 5px 5px 5px;
+	background-color: transparent;
+	z-index: 5;
+}
+
+#checkout .aqpago-box-card input:focus,
+#checkout .aqpago-box-card select:focus {
+	border-bottom: 1px solid #eee;
+}
+
+#checkout .aqpago-box-card label,
+#checkout .street span {
+	font-family: 'IsidoraSans-Regular';
+	font-weight: normal;
+	color: #881eb1;
+}
+
+#checkout .street span {
+	font-weight: bold;
+}
+
+#checkout .card-info input {
+	border: 0px;
+}
+
+#checkout .aqpago-box-card .field {
+	margin-bottom: 20px;
+}
+
+#checkout .card-box input,
+#checkout .card-box select {
+	font-family: 'IsidoraSans-SemiBold';
+	background: transparent;
+	border: 0px;
+	color: #fff;
+}
+
+#checkout .aqpago-button {
+	background: #fff !important;
+	border: 1px solid #881eb1 !important;
+	color: #881eb1 !important;
+}
+
+#checkout #card-firstname {
+	font-size: 16px;
+}
+
+#checkout .valid_month_checkout {
+	float: inherit;
+}
+
+#checkout .card-info select {
+	top: -40px;
+}
+
+#checkout .aqpago-box-card-checkout .card-barra {
+	top: -12px;
+}
+
+#checkout .aqpago-box-card-checkout .select-year {
+	width: 30% !important;
+	float: left;
+}
+
+#checkout .aqpago-box-card-checkout .select-month {
+	width: 60% !important;
+	float: left;
+	height: 30px;
+}
+
+#checkout .field-name-code-checkout {
+	float: initial !important;
+}
+
+#checkout .field-name-code-checkout .field-name-valid_month {
+	width: 60% !important;
+}
+
+#checkout .field-name-code-checkout,
+#checkout .valid_month_checkout {
+	float: left !important;
+}
+
+#checkout .field-name-code-checkout {
+	width: 30%;
+}
+
+#checkout .valid_month_checkout {
+	width: 65%;
+	margin-right: 5% !important;
+}
+
+#checkout .field-select-billing select {
+	padding-right: 8%;
+}
+
+#checkout .aqpago-box-card-checkout .card-cvv {
+	top: 80px;
+	right: 50px;
+	width: 70px;
+}
+
+#checkout .aqpago-box-card-checkout .flag-card {
+	right: 0px;
+	top: 30px;
+}
+
+#checkout .aqpago-box-card-checkout .title-card {
+	font-family: 'IsidoraSans-SemiBold';
+	font-size: 30px !important;
+	font-weight: 300;
+	margin-top: 30px;
+}
+
+#checkout .aqpago-box-card-checkout .card-info {
+	top: 100px;
+}
+
+#checkout .aqpago-box-card-checkout .flag-card #img-flag-card {
+	max-height: 35px;
+}
+
+#checkout .aqpago-box-card-checkout #aqpago_installments_div {
+	margin-top: 15px;
+}
+
+#checkout .aqpago-list {
+	float: left !important;
+	margin-top: 25px;
+}
+
+#checkout .aqpago-list .flag-card {
+	display: block;
+}
+
+#checkout .aqbank_payment_title {
+	font-size: 22px;
+	color: #4F076B;
+	margin-bottom: 15px;
+}
+
+#checkout .aqbank_type_payment {
+	width: 100%;
+	height: auto;
+	margin: 10px 0px;
+	box-shadow: 0px 3px 6px #000000;
+	padding: 10px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#checkout .aqbank_type_payment_li_box {
+	position: relative;
+	height: 30px;
+	cursor: pointer;
+	border-bottom: 1px solid #DFDFDF;
+	padding: 15px 10px;
+}
+
+#checkout .iwd_opc_column_content .aqbank_type_payment_li_box {
+	position: relative;
+	height: 50px;
+	cursor: pointer;
+	border-bottom: 1px solid #DFDFDF;
+	padding: 15px 10px;
+}
+
+#checkout .field.field-not,
+#checkout .iwd_opc_column_content .aqbank-grand-total-boleto {
+	display: none;
+}
+
+#checkout .iwd_opc_column_content .field.field-not {
+	display: block;
+}
+
+#checkout .checkout-payment-method .payment-method-content {
+	padding: 0px;
+}
+
+#checkout .aqbank_type_payment_li_box input {
+	position: absolute !important;
+	top: 3px !important;
+	right: 3px !important;
+	height: 20px !important;
+}
+
+#checkout .aqbank_type_payment_li_box span {
+	color: #000;
+	text-transform: uppercase;
+}
+
+#checkout .aqbank_type_payment input[type='radio'] {
+	-webkit-appearance: none;
+	width: 15px !important;
+	height: 15px !important;
+	border-radius: 50%;
+	outline: none;
+	border: 1px solid #4F076B;
+}
+
+#checkout .aqbank_type_payment input[type='radio']:before {
+	content: '';
+	display: block;
+	width: 60%;
+	height: 60%;
+	margin: 20% auto;
+	border-radius: 50%;
+}
+
+#checkout .aqbank_type_payment input[type="radio"]:checked:before {
+	background: #4F076B;
+}
+
+#checkout .aqbank_type_payment input[type="radio"]:checked {
+	border-color: #4F076B;
+	background-color: #4F076B;
+}
+
+#checkout .aqbank_payment_integral {
+	text-align: center;
+}
+
+#checkout .aqbank_payment_integral strong {
+	font-family: "IsidoraSans-Bold";
+	color: #000;
+}
+
+#checkout .aqbank_payment_integral_li {
+	float: left;
+	width: 80px;
+	height: 80px;
+}
+
+#checkout .aqbank_payment_integral .aqbank_payment_integral_li {
+	height: 80px;
+	width: 80px;
+	box-shadow: 0px 3px 6px #0000004d;
+}
+
+#checkout .aqbank_payment_integral_text {
+	margin-top: 20px;
+}
+
+#checkout .aqbank_payment_integral_box {
+  /*display: flex;
+	justify-content: center; */
+	margin-bottom: 20px;
+}
+
+#checkout .aqbank_payment_integral_box .li-form-payment {
+	width: 100%;
+	height: 76px;
+	margin-bottom: 35px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid #EBEBEB;
+  /* box-shadow: 0px 3px 6px #0000004d; */;
+}
+
+#checkout .aqbank-checkout {
+	min-height: 205px;
+	display: flex;
+	justify-content: center;
+}
+
+#checkout .aqbank-checkout .background-card-front {
+	color: #fff;
+	font-size: 20px;
+	position: relative;
+	background: url('../images/card/background-card-front.svg');
+	background-size: cover;
+	height: 205px;
+	width: 285px;
+}
+
+#checkout .aqbank-checkout .background-card-back {
+	color: #fff;
+	font-size: 20px;
+	position: relative;
+	background: url('../images/card/background-card-back.svg');
+	background-size: cover;
+	height: 205px;
+	width: 285px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#checkout .aqbank-box-parcelas {
+	width: 50%;
+  /*text-align: center;
+    display: flex;
+    justify-content: center;*/
+	margin-top: 10px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+#checkout .aqbank-box-price {
+	position: relative;
+	float: right;
+	width: 167px;
+	height: 64px;
+	box-shadow: 0px 3px 6px #000000;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#checkout .aqbank-buttons-parcelas {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+#checkout #number_installments_multi {
+	border: 0px !important;
+}
+
+#checkout .aqbank-round-parcelas {
+	position: relative;
+	width: 100%;
+	height: 80px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+	border: 1px solid #f3f1f1;
+	padding: 10px 0px;
+}
+
+#checkout .text-parcelas {
+	text-transform: uppercase;
+	font-size: 10px;
+	width: auto;
+	position: absolute;
+	top: -6px;
+	left: 5px;
+	background: #fff;
+}
+
+#checkout .aqbank-box-parcelas ul {
+	list-style: none;
+	margin: auto;
+	text-align: center;
+	padding: 0px;
+	width: 100%;
+}
+
+#checkout .aqbank-box-parcelas ul li {
+	width: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+}
+
+#checkout .aqbank-box-parcelas ul li.number,
+#checkout .aqbank-box-parcelas ul li.number select {
+	font-family: 'IsidoraSans-Bold';
+	font-size: 37px;
+	color: #363636;
+	font-size: 28px;
+}
+
+#checkout .aqbank-box-parcelas ul li.number select {
+	height: 50px;
+	border: 0px !important;
+	width: 70px;
+	position: relative;
+	left: 5px;
+	padding: 0px;
+}
+
+#checkout .aqbank-box-parcelas ul li.number select:after {
+	position: relative;
+	right: 0px;
+}
+
+#checkout .icon-plus {
+	width: 40px;
+	height: 35px;
+	background: url('../images/icons/icon-plus.svg');
+	background-size: cover;
+	cursor: pointer;
+}
+
+#checkout .icon-sub {
+	width: 40px;
+	height: 35px;
+	background: url('../images/icons/icon-sub.svg');
+	background-size: cover;
+	cursor: pointer;
+}
+
+#checkout .aqbank-relative {
+	position: relative;
+}
+
+#checkout .aqbank-grandtotal-card {
+	font-size: 43px;
+	color: #232323;
+	text-align: center;
+}
+
+#checkout .aqbank-total-parcelas {
+	font-size: 13px;
+	color: #232323;
+	position: absolute;
+	top: -5px;
+	right: 0px;
+}
+
+#checkout .aqbank_place_order_button {
+	background: #4F076B !important;
+	border: #4F076B !important;
+	margin-bottom: 10px !important;
+	width: 100%;
+	height: 50px;
+}
+
+#checkout .aqbank_opc_payment {
+	min-width: 400px;
+}
+
+#checkout .aqbank-aqpago-none {
+	display: none;
+}
+
+#checkout .aqbank-aqpago-load-cep {
+	height: 30px;
+	position: absolute;
+	top: 5px;
+	right: 0px;
+}
+
+#checkout .aqbank-icon-button-boleto,
+#checkout .aqbank-icon-button-pix {
+	height: 16px;
+	width: 24px;
+}
+
+#checkout .aqbank_payment_boleto,
+#checkout .aqbank_payment_pix {
+	display: none;
+}
+
+#checkout .aqbank_justify_left {
+	justify-content: left;
+}
+
+#checkout .aqbank-box-multipagamentos {
+	display: none;
+}
+
+#checkout .input-val-multi {
+	font-size: 43px;
+	color: #232323;
+	text-align: center;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-box-parcelas {
+	justify-content: initial;
+	float: left;
+	width: 46%;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-multi-pagamento-valor {
+	width: 53%;
+	float: right;
+	justify-content: flex-end;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-round-parcelas {
+	float: left;
+	display: block;
+	justify-content: initial;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-box-parcelas ul li {
+	width: 42px;
+}
+
+#checkout .aqbank-box-multipagamentos .icon-plus,
+#checkout .aqbank-box-multipagamentos .icon-sub {
+	width: 30px;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-box-parcelas ul li.number select {
+	font-size: 20px;
+	-webkit-appearance: media-slider;
+	-moz-appearance: media-slider;
+}
+
+#checkout .aqbank-box-multipagamentos .aqbank-multi-pagamento-valor input {
+	font-size: 18px;
+	width: 140px;
+	height: 45px;
+	margin: 0px;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	padding-left: 27px;
+}
+
+#checkout .aqbank-multi-pagamento-valor .aqbank-round-parcelas {
+	position: relative;
+}
+
+#checkout .aqbank-multi-pagamento-valor .aqbank-round-parcelas .currency-valor {
+	position: absolute;
+	top: 20px;
+	font-size: 20px;
+	z-index: 4;
+}
+
+#checkout .aqbank-multi-pagamento-valor .aqbank-multi-pagamento-valor .aqbank-round-parcelas {
+	width: 180px;
+}
+
+#checkout .aqbank-multi-pagamento-valor .aqbank-multi-pagamento-valor {
+	margin-left: 10px;
+	width: 180px;
+}
+
+#checkout .aqbank_custom_informations .grandtotal-resume {
+	display: none;
+}
+
+#checkout .li-form-payment-ticket-infos {
+	display: none;
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+	#checkout .card-box .card-info {
+		top: 48%;
+		max-width: 360px;
+	}
+	#checkout .flag-card {
+		top: 72px;
+		right: 0px;	
+	}
+	#checkout .flag-card #img-flag-card {
+		max-height: 30px;
+		max-width: 70px;
+	}
+	
+	#checkout .card-month, .card-year {
+		width: 16%;
+	}
+	
+	#checkout .card-year {
+		width: 20%;
+	}
+}
+@media (max-width: 1000px) {
+	#checkout .aqpago-box-card {
+		width: 100% !important;
+	}
+	#checkout .aqpago-box-card .card-box {
+		width: 80%;
+	}
+	#checkout .flag-card {
+		top: 72px;
+		right: 0px;	
+	}
+	#checkout .flag-card #img-flag-card {
+		max-height: 30px;
+		max-width: 70px;
+	}
+	
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+	#checkout .aqpago-box-card-checkout .card-info {
+		top: 90px;
+		width: 330px;
+	}
+	
+	#checkout .aqpago-box-card-checkout .card-number {
+		font-size: 23px !important;
+	}
+	#checkout .aqpago-box-card-checkout .flag-card {
+		right: 0px;
+	}
+	#checkout .aqpago-box-card-checkout .card-cvv {
+		right: 31px;
+		width: 80px;
+		top: 70px;
+	}
+	#checkout .aqpago-box-card-checkout .card-code {
+		height: 25px !important;
+	}
+}
+@media (max-width: 768px) {
+	
+	#checkout .aqbank_custom_informations .grandtotal-resume {
+		display: block;
+	}
+	#checkout .aqpago-field-card {
+		float: left !important;
+	}
+	#checkout .aqpago-field-input {
+		float: unset !important;
+	}
+	#checkout .flag-card {
+		top: 30px;
+		right: 0px;
+	}
+	#checkout .card-box .card-info {
+		top: 85px;
+		left: 5px;
+		width: 330px;
+	}
+	#checkout .card-number {
+		font-size: 23px !important;
+	}
+	#checkout #card-firstname {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 550px) {
+	#checkout .aqpago-box-card .card-box {
+		width: 100%;
+	}
+	#checkout .card-cvv {
+		top: 85px;
+	}
+}
+
+@media (min-width: 200px) and (max-width: 460px) {
+	#checkout .card-box .card-info {
+		top: 48%;
+	}
+	#checkout .card-number {
+		font-size: 24px !important;
+	}
+	
+	#checkout .card-month, .card-year {
+		width: 16%;
+	}
+	
+	#checkout .card-year {
+		width: 20%;
+	}
+	#checkout .flag-card {
+		top: 40px;
+		right: 0px;
+	}
+	#checkout .card-year {
+		right: -30px;
+	}
+	#checkout .card-month {
+		right: -35px;
+	}
+	#checkout .card-barra {
+		top: -15px;
+		right: -35px;
+	}
+}
+@media (max-width: 375px) {
+	#checkout .aqpago-box-card-checkout .card-box .card-info {
+		width: 310px;
+	}
+	#checkout .aqpago-box-card-checkout .card-year, .aqpago-box-card-checkout .card-month {
+		font-size: 14px !important;
+	}
+	
+	#checkout .aqpago-box-card-checkout .card-barra {
+		font-size: 20px !important;
+		right: -20px;
+		top: -8px;
+	}
+	#checkout .aqpago-box-card-checkout .card-month {
+		right: -35px;
+	}
+	#checkout .aqpago-box-card-checkout .card-year {
+		right: -5px;
+	}
+}
+
+#checkout .aqpago-list .aqpago-field-card {
+	float: left !important;
+}
