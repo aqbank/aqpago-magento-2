@@ -2,7 +2,7 @@
 	"name": "aqbank/aqpago",
 	"description": "Módulo de pagamento AQPAGO para Magento 2",
 	"require": {
-		"aqbank/api-v2": "dev-main",
+		"aqbank/api-v2": "*",
 		"picqer/php-barcode-generator": "2.*",
         "magento/module-sales": "100.0.*",
         "magento/module-checkout": "100.0.*",
