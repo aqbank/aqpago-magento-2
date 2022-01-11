@@ -8,3 +8,5 @@ Integre sua loja Magento 2 com meio de pagamento da AQPago.
 - Pagamento com Boleto
 
 https://aqpago.com.br
+
+- Magento 2.4.2
