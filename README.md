@@ -1,9 +1,6 @@
 # Módulo AQPago para Magento 2
 
 Integre sua loja Magento 2 com meio de pagamento da AQPago.
-
-## Importante testado com a versão 2.4.2 demais versão em fases de testes.
-
 ## Tipos de pagamentos
 - Pagamento com cartão
 - Pagamento Multipo com 2 cartões
@@ -12,4 +9,11 @@ Integre sua loja Magento 2 com meio de pagamento da AQPago.
 
 https://aqpago.com.br
 
-- Magento 2.4.2
+## Instalação
+
+ - `composer require aqbank/aqpago-modulo-magento2` 
+ - `php bin/magento setup:upgrade`
+ - `php bin/magento setup:static-content:deploy` ou `php bin/magento setup:static-content:deploy pt_BR`, conforme a configuração da loja.
+
+## Testado nas versões
+- Magento 2.4.x
