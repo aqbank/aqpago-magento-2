@@ -5,9 +5,9 @@
 		"aqbank/aqpago-sdk-api-v2": "1.*",
 		"picqer/php-barcode-generator": "2.*",
         "magento/module-sales": "103.*",
-        "magento/module-checkout": "103.*",
-        "magento/module-payment": "103.*",
-        "magento/framework": "103.*"
+        "magento/module-checkout": "100.*",
+        "magento/module-payment": "100.*",
+        "magento/framework": "100.*"
 	},
 	"type": "magento2-module",
 	"license": [
