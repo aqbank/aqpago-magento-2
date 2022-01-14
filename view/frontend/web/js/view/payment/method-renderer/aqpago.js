@@ -4436,6 +4436,7 @@ define([
 				
 				$('.payment-method-aqbank').hide();
 				$('.finish-animation-box-two .circle-img').hide();
+				$('#iwd_opc_discount').hide();
 				
 				$('.finish-animation-box-one').fadeIn('100');
 				$('.finish-animation-box-two').fadeIn('100');
@@ -4735,7 +4736,7 @@ define([
 								
 								/** rewrite card information **/
 								self.cards( cards );
-								if(Number.isInteger(data)) {
+								if(!isNaN(data)){
 									self.payment_order_id( data );
 								}
 								
