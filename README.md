@@ -16,4 +16,3 @@ https://aqpago.com.br
  - `php bin/magento setup:static-content:deploy` ou `php bin/magento setup:static-content:deploy pt_BR`, conforme a configuração da loja.
 
 ## Testado nas versões
-- Magento 2.4.x
