@@ -21,9 +21,13 @@ Com o módulo instalado e configurado você pode oferecer os seguintes meios de 
 
 ```sh
 composer require aqbank/aqpago-modulo-magento2
+
 php bin/magento setup:upgrade
+
 php bin/magento setup:di:compile
+
 php bin/magento setup:static-content:deploy
+
 ```
 
 ### Configuração
