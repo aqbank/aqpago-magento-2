@@ -34,17 +34,28 @@ php bin/magento setup:static-content:deploy
 > Atenção! Adquira seu token em https://aqbank.app menu Integrações -> Acesso ShopAQPago ou pelo APP AQPago Gestor.
 
 - **Habilitado:** ativa o meio de pagamento AQPago para os compradores.
+
 - **Ambiente:** especifica em qual ambiente as transações serão realizadas (produção ou sandbox).
+
 - **Ativar Multi Pagamentos** Ativa pagar com 2 cartões e cartão + boleto.
+
 - **Título:** título do pagamento que aparecerá para o comprador.
+
 - **Documento do Lojista:** documento cadastrado no crediciamento da AQPago.
+
 - **AQPAGO Token:** token adiquirido atráves https://aqbank.app menu Integrações -> Acesso ShopAQPago ou pelo APP AQPago Gestor.
 > Atenção ao atualizar um token em https://aqbank.app ou pelo APP, o token antigo deixa de funcionar, lembre-se de atualizar a loja com o novo token gerado!
+
 - **Nome na fatura:** nome que aparecerá na fatura do cliente (ainda não disponível alterar por https://aqbank.app ou pelo APP AQPago Gestor)
+
 - **Número máximo de parcelas:** Quantidade Máxima permitida de parcelas.
+
 - **Valor mínimo para parcelamento:** valor mínimo de cada parcela, deixa em branco para parcelas com qualquer valor.
+
 - **Instruções no Boleto:** instruções que apareceram no boleto para o cliente.
+
 - **Ordenação:** posição do pagamento no checkout com realação aos demais meios de pagamentos.
+
 
 [aqpago]: <https://aqpago.com.br>
 [SDK]: <https://github.com/aqbank/aqpago-sdk-api-v2>
