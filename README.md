@@ -37,8 +37,6 @@ php bin/magento setup:static-content:deploy
 
 - **Ambiente:** especifica em qual ambiente as transações serão realizadas (produção ou sandbox).
 
-- **Ativar Multi Pagamentos** Ativa pagar com 2 cartões e cartão + boleto.
-
 - **Título:** título do pagamento que aparecerá para o comprador.
 
 - **Documento do Lojista:** documento cadastrado no crediciamento da AQPago.
@@ -53,8 +51,6 @@ php bin/magento setup:static-content:deploy
 - **Valor mínimo para parcelamento:** valor mínimo de cada parcela, deixa em branco para parcelas com qualquer valor.
 
 - **Instruções no Boleto:** instruções que apareceram no boleto para o cliente.
-
-- **Ordenação:** posição do pagamento no checkout com realação aos demais meios de pagamentos.
 
 
 [aqpago]: <https://aqpago.com.br>
