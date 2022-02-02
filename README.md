@@ -1,4 +1,6 @@
 
+# Lançamento em breve não utilizar!
+
 # Módulo de integração AQPago com Magento 2x
 
 ### Descrição
