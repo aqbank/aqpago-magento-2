@@ -1,5 +1,5 @@
 {
-	"name": "aqbank/aqpago",
+	"name": "aqbank/aqpago-modulo-magento2",
 	"description": "Módulo de pagamento AQPAGO para Magento 2",
 	"require": {
 		"aqbank/api-v2": "dev-master",
