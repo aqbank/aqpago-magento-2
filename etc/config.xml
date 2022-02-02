@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+        <payment>
+            <aqpago>
+                <model>AqpagoFacade</model>
+				<payment_action>authorize</payment_action>
+				<order_status>pending_payment</order_status>
+				
+				<cctypes>VI,MC,AU,DN,BC,JCB,ELO,AMEX,HI,HC</cctypes>
+				<cctypes_aqpago_mapper><![CDATA[{"Visa":"VI","Mastercard":"MC","Aura":"AU","Diners":"DN","Banescar":"BC","JCB":"JCB","ELO":"ELO","American Express":"AMEX","Hiper":"HI","Hipercard":"HC"}]]></cctypes_aqpago_mapper>
+                <title>AQPAGO Pagamentos</title>
+                <active>1</active>
+                <multi_active>1</multi_active>
+                <payments_active>aqpago,aqpago_pix,aqpago_boleto</payments_active>
+                <number_installments>12</number_installments>
+                <min_total_installments>0</min_total_installments>
+				
+                <document_input>vat_id</document_input>
+                <phone_input>telephone</phone_input>
+				
+                <environment>production</environment>
+                <module></module>
+                <gateway></gateway>
+
+                <can_authorize>1</can_authorize>
+                <can_sale>1</can_sale>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_refund>1</can_refund>
+                <can_cancel>1</can_cancel>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+
+                <is_gateway>1</is_gateway>
+                <sort_order>-1</sort_order>
+				
+                <paymentInfoKeys>Transaction ID,Status,Return Message,order_type,1_pay_number,1_pay_status,1_pay_amount,1_pay_date,1_pay_created_at,ticket_url,ticket_bar_code,expiration_date,2_pay_number,2_pay_status,2_pay_amount,2_pay_date,2_pay_created_at</paymentInfoKeys>
+                <privateInfoKeys>cc_type,cc_number</privateInfoKeys>
+            </aqpago>
+        </payment>
+    </default>
+</config>

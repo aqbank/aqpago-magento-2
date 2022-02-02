@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Payment\Block\Info $block
+ * @see \Magento\Payment\Block\Info
+ */
+$specificInfo = $block->getSpecificInformation();
+$paymentTitle = $block->getMethod()->getConfigData('title', $block->getInfo()->getOrder()->getStoreId());
+?>
+<?= $block->escapeHtml($paymentTitle) ?>
+
+<?php if ($specificInfo) : ?>
+	<div style="position: relative;margin-bottom: 115px;">
+		<table class="data-table admin__table-secondary">
+		<?php foreach ($specificInfo as $label => $value) : ?>
+			<tr>
+				<th><?= $block->escapeHtml($label) ?>:</th>
+				<td>
+					<?php if($label == 'ticket_url' || $label == 'Boleto'): ?>
+						<button class="action-primary" type="button" onClick="window.open('<?= $value; ?>','boleto');" title="<?= __('Open') ?>"><?= __('Open') ?></button>
+					<?php else: ?>
+						<?php if($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
+							<button class="action-primary" type="button" data-trigger="barcode" title="<?= __('View') ?>"><?= __('View') ?></button>
+						<?php else: ?>
+							<?= /* @noEscape */ nl2br($block->escapeHtml(implode("\n", $block->getValueAsArray( __($value), true)))) ?>
+						<?php endif ?>
+					<?php endif ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</table>
+		
+		<?php foreach ($specificInfo as $label => $value) : ?>
+			<?php if($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
+				<div 
+ data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Código de barras',
+			'modalClass':'barcode-modal',
+			'innerScroll':true,
+            'trigger': '[data-trigger=barcode]',
+            'responsive': true,
+            'buttons': [{
+				text: jQuery.mage.__('Copy barcode'),
+                class: 'action primary checkout aqbank_place_order_button',
+				click: function () {
+					copyBarCode();
+					this.closeModal();
+				}
+            }]
+        }}"				
+				style="display:none;background:#ffffff;padding: 15px 10px;min-width: 600px;text-align: center;">
+					<?php $block->getBarCodeImage($value) ?>
+					<input type="text" id="barcode-copy" value="<?= $value ?>" style="width: 100%;border: 0px;text-align: center;" />
+				</div>
+			<?php endif ?>
+		<?php endforeach; ?>
+	</div>
+<script>
+function copyBarCode() {
+	var copyText = document.getElementById("barcode-copy");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	navigator.clipboard.writeText(copyText.value);
+}
+</script>
+<?php endif;?>
+
+<?= $block->getChildHtml() ?>

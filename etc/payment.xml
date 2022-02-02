@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<payment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/payment.xsd">
+    <credit_cards>
+        <type id="VI" order="10">
+            <label>Visa</label>
+        </type>
+        <type id="MC" order="20">
+            <label>Mastercard</label>
+        </type>
+        <type id="AU" order="30">
+            <label>Aura</label>
+        </type>
+        <type id="DI" order="40">
+            <label>Diners</label>
+        </type>
+        <type id="BC" order="50">
+            <label>Banescard</label>
+        </type>
+        <type id="JBC" order="60">
+            <label>JBC</label>
+        </type>
+        <type id="ELO" order="70">
+            <label>Elo</label>
+        </type>
+        <type id="AMEX" order="80">
+            <label>American Express</label>
+        </type>
+        <type id="HI" order="90">
+            <label>Hiper</label>
+        </type>
+        <type id="HC" order="100">
+            <label>HiperCard</label>
+        </type>
+    </credit_cards>
+</payment>

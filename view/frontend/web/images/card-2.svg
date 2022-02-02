@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.368" height="53.233" viewBox="0 0 39.368 53.233">
+  <defs>
+    <filter id="Caminho_9599" x="0" y="0" width="39.368" height="53.233" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_6541" data-name="Grupo 6541" transform="translate(9 6)">
+    <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Caminho_9599)">
+      <path id="Caminho_9599-2" data-name="Caminho 9599" d="M18.5,0C30.3,0,39.868,7.887,39.868,17.617S30.3,35.233,18.5,35.233Z" transform="translate(-9.5 6)" fill="#561271"/>
+    </g>
+    <text id="_2_" data-name="2º" transform="translate(3.172 21.612)" fill="#fff" font-size="13" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">2º</tspan></text>
+  </g>
+</svg>

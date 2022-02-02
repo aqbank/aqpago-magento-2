@@ -1,0 +1,187 @@
+
+<!-- Modal -->
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'EDITAR PAGAMENTO',
+			'modalClass':'onecard-modal',
+			'innerScroll':true,
+            'trigger': '[data-trigger=twoCard]',
+            'responsive': true,
+            'buttons': [{
+                text: jQuery.mage.__('SALVAR'),
+                class: 'action primary checkout aqbank_place_order_button modal-aqpago-card',
+				click: function () {
+					if(saveCardTwoEdit()){
+						this.closeModal();
+					}
+				}            
+			}]
+        }}">
+    <div class="content aqban-modal-two-card aqpago-box-all-payments">
+		
+		<fieldset data-bind="attr: {class: 'fieldset card_two payment items ccard' + getCode()}">
+			<fieldset class="fieldset aqpago-box-card aqpago-box-card-checkout">
+				<div class="modal-erro modal-two-erro"></div>
+				<div class="aqbank-box-parcelas padding-right-5">
+					<div class="aqbank-round-parcelas">
+						<div class="text-parcelas"><!-- ko i18n: 'TOTAL DE PARCELAS'--><!-- /ko --></div>
+						<div class="aqbank-buttons-parcelas">
+							<ul>
+								<li>
+									<span class="icon-sub"
+											data-bind="
+											html: getIconSub(),
+											click: setOrderSub('aqpago-select-two-pop'),
+											attr: {title: $t('Menos')},
+											"
+										></span>
+								</li>
+								<li class="number number-aqpago_installments">
+									<select class="select input-text card-select aqpago-select-two-pop"
+										data-bind="
+											attr:{id: getCode() + '_installments_cardTwo'},
+											options: getNewInstallments(),
+											optionsValue: 'value',
+											optionsText: 'key',
+											value: 1">						
+									</select>									
+								</li>
+								<li>
+									<span class="icon-plus"
+											data-bind="
+											html: getIconSum(),
+											click: setOrderSum('aqpago-select-two-pop'),
+											attr: {title: $t('Mais')},
+											"								
+										></span>
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="aqbank-box-parcelas aqbank-multi-pagamento-valor modal-edit-amount" style="display:none;">
+					<div class="aqbank-round-parcelas aqbank-round-parcelas-input">
+						<span class="multi-valor-tooltip">
+							<a href="#" class="tooltip-toggle">
+								<img data-bind="attr: { src: getIconToolTip()}" class="img-tool-tip"/>
+							</a>
+							<span class="tooltip-content"><!-- ko i18n: 'Digite o valor que irá pagar neste cartão'--><!-- /ko --></span>
+						</span>
+						<div class="text-parcelas"><!-- ko i18n: 'Valor do Pagamento'--><!-- /ko --></div>
+						<span class="currency-valor">R$</span>
+						<input type="tex" data-bind="attr:{id: getCode() + '_cc_multiple_val_twoCard'},value: getGrandTotalSubdivide()" class="aqbank-input-valor" />
+						
+						<div data-bind="html: getIconEdit(), click: setAqbankInputValor()" class="img-edit"></div>
+						
+					</div>
+				</div>
+				
+				<div style="clear:both;"></div>
+		
+		<div class="field field-name-lastname">
+			<label data-bind="attr: {for: getCode() + '_cc_number_cardTwo'}" class="label">
+				<span><!-- ko i18n: 'Card Number'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" step="0" maxlength="19" class="input-text" value=""
+					   placeholder="0000 0000 0000 0000" data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_number_cardTwo',
+										title: $t('Card Number'),
+										placeholder:  $t('0000 0000 0000 0000')
+										}
+										value: creditCardNumber,
+										valueUpdate: 'keyup'" />
+			</div>
+		</div>
+		
+		<div class="field field-name-name_card">
+			<label data-bind="attr: {for: getCode() + '_cc_owner_cardTwo'}" class="label">
+				<span><!-- ko i18n: 'Card Owner'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input style="text-transform: uppercase;" type="text" class="input-text" value=""
+					   data-bind="attr: {
+										autocomplete: off,
+										id: getCode() + '_cc_owner_cardTwo',
+										title: $t('Card Owner'),
+										placeholder:  $t('Card Owner')
+										}
+										value: creditCardOwner,
+										valueUpdate: 'keyup' "/>
+			</div>
+		</div>
+		
+		<div>
+			<div class="field valid_month_checkout">
+				<label data-bind="attr: {for: getCode() + '_expiration_cardTwo'}" class="label">
+					<span><!-- ko i18n: 'Validate'--><!-- /ko --></span>
+				</label>
+				<div class="control"> 
+						
+						<select class="select select-month input-text card-select valid_month"
+								data-bind="attr: {id: getCode() + '_expiration_cardTwo'},
+											options: getCcMonthsValues(),
+											optionsValue: 'value',
+											optionsText: 'month'">
+						</select>
+						
+						<select class="select select-year card-select valid_year"
+								data-bind="attr: {id: getCode() + '_expiration_yr_cardTwo'},
+										   options: getCcYearsValues(),
+										   optionsValue: 'value',
+										   optionsText: 'year'">
+						</select>
+				
+				</div>
+			</div>
+			
+			
+			<div class="field field-name-code-checkout">
+				<label data-bind="attr: {for: getCode() + '_cc_cid_cardTwo'}" class="label">
+					<span><!-- ko i18n: 'Code'--><!-- /ko --></span>
+				</label>
+				<div class="control">
+					<input type="number"
+						   step="0"
+						   maxlength="4"
+						   autocomplete="off"
+						   class="input-number cvv"
+						   maxlength="4"
+						   value=""
+						   data-bind="attr: {id: getCode() + '_cc_cid_cardTwo'}"/>			
+				</div>
+			</div>
+		</div>
+		
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field field-not" id="div-not-cardTwo">
+			<div class="control">
+				<input type="checkbox" id="not_cardTwo" class="not" value="1">
+				<span><!-- ko i18n: 'SOU TITULAR DO CARTÃO'--><!-- /ko --></span>
+			</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+		<div class="field field-name-documento documento-two-cardTwo">
+			<label data-bind="attr:{for: getCode() + '_documento_cardTwo'}" class="label">
+				<span><!-- ko i18n: 'CPF dono do cartão'--><!-- /ko --></span>
+			</label>
+			<div class="control">
+				<input type="text" data-bind="attr:{id: getCode() + '_documento_cardTwo'}" placeholder="000.000.000-00" title="CPF dono do cartão" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+			</div>
+		</div>
+		
+		<div style="clear:both;margin-bottom: 20px;"></div>
+		
+    </fieldset>	
+	
+		</fieldset>
+    </div>
+</div>

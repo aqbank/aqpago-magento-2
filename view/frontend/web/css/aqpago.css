@@ -1,0 +1,52 @@
+/* Aqpago Custom Css */
+@font-face {
+	font-family: 'IsidoraSans-Light';
+	src: url('../fonts/IsidoraSans-Light.eot');
+	src: url('../fonts/IsidoraSans-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Light.woff2') format('woff2'), url('../fonts/IsidoraSans-Light.woff') format('woff'), url('../fonts/IsidoraSans-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Medium';
+	src: url('../fonts/IsidoraSans-Medium.eot');
+	src: url('../fonts/IsidoraSans-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Medium.woff2') format('woff2'), url('../fonts/IsidoraSans-Medium.woff') format('woff'), url('../fonts/IsidoraSans-Medium.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Regular';
+	src: url('../fonts/IsidoraSans-Regular.eot');
+	src: url('../fonts/IsidoraSans-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Regular.woff2') format('woff2'), url('../fonts/IsidoraSans-Regular.woff') format('woff'), url('../fonts/IsidoraSans-Regular.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Bold';
+	src: url('../fonts/IsidoraSans-Bold.eot');
+	src: url('../fonts/IsidoraSans-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Bold.woff2') format('woff2'), url('../fonts/IsidoraSans-Bold.woff') format('woff'), url('../fonts/IsidoraSans-Bold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-SemiBold';
+	src: url('../fonts/IsidoraSans-SemiBold.eot');
+	src: url('../fonts/IsidoraSans-SemiBold.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-SemiBold.woff2') format('woff2'), url('../fonts/IsidoraSans-SemiBold.woff') format('woff'), url('../fonts/IsidoraSans-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IsidoraSans-Black';
+	src: url('../fonts/IsidoraSans-Black.eot');
+	src: url('../fonts/IsidoraSans-Black.eot?#iefix') format('embedded-opentype'), url('../fonts/IsidoraSans-Black.woff2') format('woff2'), url('../fonts/IsidoraSans-Black.woff') format('woff'), url('../fonts/IsidoraSans-Black.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+select[readonly] {
+  pointer-events: none;
+  touch-action: none;
+}
+
+.onepage-index-index .float-bar .float-bar-content {
+	display: none !important;
+}
