@@ -967,6 +967,7 @@ define([
 				
 
 			},
+			
 			/***** set card *******/
 			setCardId: function(cardId){
 				
@@ -1632,6 +1633,7 @@ define([
 				
 				return true;
 			},
+			
 			placeCardTicket: function(){
 				
 				var cards 				= this.cards();
@@ -1848,7 +1850,7 @@ define([
 				this.cards(cards);
 				this.setBandeiraInfo('#' + position + '-li-form-payment .middle-number-card img', flag, 'info');
 				
-				if($('.address-line-one').lenght) {
+				if($('.address-line-one').length) {
 					$('.address-cep').html( quote.shippingAddress().postcode );
 					$('.address-line-one').html(
 						'<span>' + quote.shippingAddress().street[0] + '</span>'
@@ -3101,7 +3103,7 @@ define([
 				var bandeira = this.setPaymentFlag(ccNumber);
 				this.setBandeiraInfo('#one-li-form-payment .middle-number-card img', bandeira, 'info');
 				
-				if($('.address-line-one').lenght) {
+				if($('.address-line-one').length) {
 					$('.address-cep').html( quote.shippingAddress().postcode );
 					$('.address-line-one').html(
 						'<span>' + quote.shippingAddress().street[0] + '</span>'
@@ -3246,7 +3248,7 @@ define([
 				var bandeira = this.setPaymentFlag(ccNumber);
 				this.setBandeiraInfo('#one-li-form-payment .middle-number-card img', bandeira, 'info');
 				
-				if($('.address-line-one').lenght) {
+				if($('.address-line-one').length) {
 					$('.address-cep').html( quote.shippingAddress().postcode );
 					$('.address-line-one').html(
 						'<span>' + quote.shippingAddress().street[0] + '</span>'
@@ -3406,7 +3408,7 @@ define([
 				var bandeira = this.setPaymentFlag(ccNumber);
 				this.setBandeiraInfo('#two-li-form-payment .middle-number-card img', bandeira, 'info');
 				
-				if($('.address-line-one').lenght) {
+				if($('.address-line-one').length) {
 					$('.address-cep').html( quote.shippingAddress().postcode );
 					$('.address-line-one').html(
 						'<span>' + quote.shippingAddress().street[0] + '</span>'
@@ -4452,7 +4454,7 @@ define([
 						this.customer_password( $('#password').val() );
 					}
 					
-					if($('input[name="username"]').lenght) {
+					if($('input[name="username"]').length) {
 						$('.email-text').html( $('input[name="username"]').val() );
 					}
 				}
