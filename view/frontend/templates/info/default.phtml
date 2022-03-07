@@ -11,22 +11,22 @@
 $specificInfo = $block->getSpecificInformation();
 $paymentTitle = $block->getMethod()->getConfigData('title', $block->getInfo()->getOrder()->getStoreId());
 ?>
-<?= $block->escapeHtml($paymentTitle) ?>
+<?php echo $block->escapeHtml($paymentTitle) ?>
 
 <?php if ($specificInfo) : ?>
 	<div style="position: relative;margin-bottom: 115px;">
 		<table class="data-table admin__table-secondary">
 		<?php foreach ($specificInfo as $label => $value) : ?>
 			<tr>
-				<th><?= $block->escapeHtml($label) ?>:</th>
+				<th><?php echo $block->escapeHtml($label) ?>:</th>
 				<td>
 					<?php if($label == 'ticket_url' || $label == 'Boleto'): ?>
-						<button class="action-primary" type="button" onClick="window.open('<?= $value; ?>','boleto');" title="<?= __('Open') ?>"><?= __('Open') ?></button>
+						<button class="action-primary" type="button" onClick="window.open('<?php echo $value; ?>','boleto');" title="<?php echo __('Open') ?>"><?php echo __('Open') ?></button>
 					<?php else: ?>
 						<?php if($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
-							<button class="action-primary" type="button" data-trigger="barcode" title="<?= __('View') ?>"><?= __('View') ?></button>
+							<button class="action-primary" type="button" data-trigger="barcode" title="<?php echo __('View') ?>"><?php echo __('View') ?></button>
 						<?php else: ?>
-							<?= /* @noEscape */ nl2br($block->escapeHtml(implode("\n", $block->getValueAsArray($value, true)))) ?>
+							<?php echo /* @noEscape */ nl2br($block->escapeHtml(implode("\n", $block->getValueAsArray($value, true)))) ?>
 						<?php endif ?>
 					<?php endif ?>
 				</td>
@@ -56,7 +56,7 @@ $paymentTitle = $block->getMethod()->getConfigData('title', $block->getInfo()->g
         }}"				
 				style="display:none;background:#ffffff;padding: 15px 10px;min-width: 600px;text-align: center;">
 					<?php $block->getBarCodeImage($value) ?>
-					<input type="text" id="barcode-copy" value="<?= $value ?>" style="width: 100%;border: 0px;text-align: center;" />
+					<input type="text" id="barcode-copy" value="<?php echo $value ?>" style="width: 100%;border: 0px;text-align: center;" />
 				</div>
 			<?php endif ?>
 		<?php endforeach; ?>
@@ -71,4 +71,4 @@ function copyBarCode() {
 </script>
 <?php endif;?>
 
-<?= $block->getChildHtml() ?>
+<?php echo $block->getChildHtml() ?>

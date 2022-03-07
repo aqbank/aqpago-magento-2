@@ -1,18 +1,18 @@
 
-<form class="form-address-edit" action="<?= $escaper->escapeUrl($block->getSaveUrl()) ?>" 
+<form class="form-address-edit" action="<?php echo$escaper->escapeUrl($block->getSaveUrl()) ?>" 
 	method="post" id="form-validate" 
 	data-hasrequired="* Campos Obrigatórios" novalidate="novalidate">
 	
 	
     <fieldset class="fieldset aqpago-box-card aqpago-field-card">
-		<?= $block->getBlockHtml('formkey') ?>
+		<?php echo$block->getBlockHtml('formkey') ?>
 		<legend class="legend">
 			<span class="title-icon-card">
 				<img src="<?php echo $this->getViewFileUrl('Aqbank_Aqpago::images/money.svg'); ?>" />
 			</span>
-			<span class="title-text"><?= $escaper->escapeHtml(__('Cartão de Crédito')) ?></span>
+			<span class="title-text"><?php echo$escaper->escapeHtml(__('Cartão de Crédito')) ?></span>
 		</legend>
-		<div class="subtitle-card"><?= __('Preencha os dados do seu cartão') ?></div>
+		<div class="subtitle-card"><?php echo __('Preencha os dados do seu cartão') ?></div>
 		<br>
 		
 		<div class="card-box card-front">
@@ -27,10 +27,10 @@
 				<div class="card-info">
 					
 					<div class="box-number">
-						<span id="card-number" class="input-text card-number"><?= __('0000 0000 0000 0000') ?></span>
+						<span id="card-number" class="input-text card-number"><?php echo __('0000 0000 0000 0000') ?></span>
 					</div>
 					<div class="box-owner-valid">
-						<span id="card-firstname" class="input-text card-owner"><?= __('Owner Name') ?></span>
+						<span id="card-firstname" class="input-text card-owner"><?php echo __('Owner Name') ?></span>
 						
 						<span id="card-year" class="input-text card-year">AAAA</span>
 						<div class="card-barra">/</div>					
@@ -59,45 +59,45 @@
 			
 			
 			<div class="field field-name-lastname required">
-				<label class="label" for="surname_card"><span><?= $escaper->escapeHtml(__('Apelido do cartão')) ?></span></label>
+				<label class="label" for="surname_card"><span><?php echo$escaper->escapeHtml(__('Apelido do cartão')) ?></span></label>
 				<div class="control">
-					<input type="text" id="surname_card" name="surname_card" placeholder="<?= __('AQBANK DIGITAL') ?>" title="<?= $escaper->escapeHtml(__('Apelido do cartão')) ?>" maxlength="100" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+					<input type="text" id="surname_card" name="surname_card" placeholder="<?php echo __('AQBANK DIGITAL') ?>" title="<?php echo$escaper->escapeHtml(__('Apelido do cartão')) ?>" maxlength="100" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
 				</div>
 			</div>
 			
 			<div class="field field-name-lastname required">
-				<label class="label" for="number_card"><span><?= $escaper->escapeHtml(__('Number Card')) ?></span></label>
+				<label class="label" for="number_card"><span><?php echo$escaper->escapeHtml(__('Number Card')) ?></span></label>
 				<div class="control">
-					<input type="text" id="number_card" name="number_card" placeholder="<?= __('0000 0000 0000 0000') ?>" title="<?= $escaper->escapeHtml(__('Number Card')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+					<input type="text" id="number_card" name="number_card" placeholder="<?php echo __('0000 0000 0000 0000') ?>" title="<?php echo$escaper->escapeHtml(__('Number Card')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
 				</div>
 			</div>
 			
 			<div class="field field-name-name_card required">
 				<label for="name_card" class="label">
-					<span><?= $escaper->escapeHtml(__('Owner Name')) ?></span>
+					<span><?php echo$escaper->escapeHtml(__('Owner Name')) ?></span>
 				</label>
 				<div class="control">
-					<input type="text" name="name_card" id="name_card" placeholder="<?= __('Owner Name') ?>" title="<?= $escaper->escapeHtml(__('Owner Name')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+					<input type="text" name="name_card" id="name_card" placeholder="<?php echo __('Owner Name') ?>" title="<?php echo$escaper->escapeHtml(__('Owner Name')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
 				</div>
 			</div>
 			
 			
 			<div class="field field-name-valid_month required">
 				<label for="valid_month" class="label">
-					<span><?= $escaper->escapeHtml(__('Validate')) ?></span>
+					<span><?php echo$escaper->escapeHtml(__('Validate')) ?></span>
 				</label>
 				<div class="control">
 					<select name="valid_month" id="valid_month" class="input-text card-select valid_month required-entry" data-validate="{required:true}" aria-required="true">
 						<option value="">Mês</option>
 						<?php for($i=1;$i<=12;$i++): ?>
-							<option value="<?= str_pad($i, 2, "0", STR_PAD_LEFT); ?>"><?php echo str_pad($i, 2, "0", STR_PAD_LEFT); ?> - <?php echo $block->setMonthName($i); ?></option>
+							<option value="<?php echostr_pad($i, 2, "0", STR_PAD_LEFT); ?>"><?php echo str_pad($i, 2, "0", STR_PAD_LEFT); ?> - <?php echo $block->setMonthName($i); ?></option>
 						<?php endfor; ?>
 					</select>
 					
 					<select name="valid_year" id="valid_year" class="input-text card-select required-entry" data-validate="{required:true}" aria-required="true">
 						<option value="">Ano</option>
 						<?php for($i=date('Y');$i<=(date('Y')+12);$i++): ?>
-							<option value="<?= $i ?>"><?= $i ?></option>
+							<option value="<?php echo$i ?>"><?php echo$i ?></option>
 						<?php endfor; ?>
 					</select>
 				
@@ -106,10 +106,10 @@
 			
 			<div class="field field-name-code required">
 				<label for="code" class="label">
-					<span><?= $escaper->escapeHtml(__('Code')) ?></span>
+					<span><?php echo$escaper->escapeHtml(__('Code')) ?></span>
 				</label>
 				<div class="control">
-					<input type="text" name="code" id="code" placeholder="<?= __('000') ?>" title="<?= $escaper->escapeHtml(__('CVV')) ?>" maxlength="4" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+					<input type="text" name="code" id="code" placeholder="<?php echo __('000') ?>" title="<?php echo$escaper->escapeHtml(__('CVV')) ?>" maxlength="4" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
 				</div>
 			</div>
 			
@@ -119,10 +119,10 @@
 		
 		<div class="field field-name-documento required">
 			<label for="documento" class="label">
-				<span><?= $escaper->escapeHtml(__('CPF dono do cartão')) ?></span>
+				<span><?php echo$escaper->escapeHtml(__('CPF dono do cartão')) ?></span>
 			</label>
 			<div class="control">
-				<input type="text" name="documento" id="documento" placeholder="<?= __('000.000.000-00') ?>" title="<?= $escaper->escapeHtml(__('CPF dono do cartão')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" name="documento" id="documento" placeholder="<?php echo __('000.000.000-00') ?>" title="<?php echo$escaper->escapeHtml(__('CPF dono do cartão')) ?>" class="input-text required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>
 		
@@ -135,58 +135,58 @@
 			<span class="title-icon-card">
 				<img src="<?php echo $this->getViewFileUrl('Aqbank_Aqpago::images/residencia.svg'); ?>" />
 			</span> 
-			<span class="title-text"><?= $escaper->escapeHtml(__('Endereço Residencial')) ?></span>
+			<span class="title-text"><?php echo$escaper->escapeHtml(__('Endereço Residencial')) ?></span>
 		</legend>
 		<br>
 		
 		<div class="field field-name-postcode required">
 			<label class="label label-postcode" for="postcode">
-				<span><?= $escaper->escapeHtml(__('Postcode')) ?></span>
+				<span><?php echo$escaper->escapeHtml(__('Postcode')) ?></span>
 				
 				<span id="image-load"><img src="<?php echo $block->getViewFileUrl('Aqbank_Aqpago::images/load.svg'); ?>" class="img-load-aqpago" /></span>
 			</label>
 			<div class="control">
-				<input type="text" id="postcode" name="postcode" placeholder="<?= __('0000-000') ?>" title="<?= $escaper->escapeHtml(__('Postcode')) ?>" class="input-text postcode required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" id="postcode" name="postcode" placeholder="<?php echo __('0000-000') ?>" title="<?php echo$escaper->escapeHtml(__('Postcode')) ?>" class="input-text postcode required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>
 		
 		<div class="field field-name-address required">
-			<label class="label" for="address"><span><?= $escaper->escapeHtml(__('Address')) ?></span></label>
+			<label class="label" for="address"><span><?php echo$escaper->escapeHtml(__('Address')) ?></span></label>
 			<div class="control">
-				<input type="text" id="address" name="address" title="<?= $escaper->escapeHtml(__('Address')) ?>" class="input-text address required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" id="address" name="address" title="<?php echo$escaper->escapeHtml(__('Address')) ?>" class="input-text address required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>
 		
 		<div class="field field-name-number required">
-			<label class="label" for="address"><span><?= $escaper->escapeHtml(__('Number')) ?></span></label>
+			<label class="label" for="address"><span><?php echo$escaper->escapeHtml(__('Number')) ?></span></label>
 			<div class="control">
-				<input type="text" id="number" name="number" title="<?= $escaper->escapeHtml(__('Number')) ?>" class="input-text number required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" id="number" name="number" title="<?php echo$escaper->escapeHtml(__('Number')) ?>" class="input-text number required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>
 		
 		<div class="field field-name-complement">
-			<label class="label" for="complement"><span><?= $escaper->escapeHtml(__('Complement')) ?></span></label>
+			<label class="label" for="complement"><span><?php echo$escaper->escapeHtml(__('Complement')) ?></span></label>
 			<div class="control">
-				<input type="text" id="complement" name="complement" title="<?= $escaper->escapeHtml(__('Complement')) ?>" class="input-text complement">
+				<input type="text" id="complement" name="complement" title="<?php echo$escaper->escapeHtml(__('Complement')) ?>" class="input-text complement">
 			</div>
 		</div>
 		
 		<div class="field field-name-district required">
-			<label class="label" for="district"><span><?= $escaper->escapeHtml(__('District')) ?></span></label>
+			<label class="label" for="district"><span><?php echo$escaper->escapeHtml(__('District')) ?></span></label>
 			<div class="control">
-				<input type="text" id="district" name="district" title="<?= $escaper->escapeHtml(__('District')) ?>" class="input-text district required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" id="district" name="district" title="<?php echo$escaper->escapeHtml(__('District')) ?>" class="input-text district required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>
 		
 		<div class="field field-name-city required">
-			<label class="label" for="city"><span><?= $escaper->escapeHtml(__('City')) ?></span></label>
+			<label class="label" for="city"><span><?php echo$escaper->escapeHtml(__('City')) ?></span></label>
 			<div class="control">
-				<input type="text" id="city" name="city" title="<?= $escaper->escapeHtml(__('City')) ?>" class="input-text city required-entry" data-validate="{required:true}" aria-required="true">
+				<input type="text" id="city" name="city" title="<?php echo$escaper->escapeHtml(__('City')) ?>" class="input-text city required-entry" data-validate="{required:true}" aria-required="true">
 			</div>
 		</div>		
 		
 		<div class="field field-name-state required">
-			<label class="label" for="state"><span><?= $escaper->escapeHtml(__('State')) ?></span></label>
+			<label class="label" for="state"><span><?php echo$escaper->escapeHtml(__('State')) ?></span></label>
 			<div class="control">
 				<select name="state" id="state" class="input-text state card-state">
 					<option value="AC">Acre</option>
@@ -224,9 +224,9 @@
 	</fieldset>
     <div class="actions-toolbar">
         <div class="primary">
-            <button type="submit" class="action save primary aqpago-button" data-action="save-address" title="<?= __('Save Card') ?>">
+            <button type="submit" class="action save primary aqpago-button" data-action="save-address" title="<?php echo __('Save Card') ?>">
                 <span class="aqpago-icon-button"><img src="<?php echo $this->getViewFileUrl('Aqbank_Aqpago::images/card_button.svg'); ?>" /></span>
-				<span class="aqpago-text-button"><?= __('Add card') ?></span>
+				<span class="aqpago-text-button"><?php echo __('Add card') ?></span>
             </button>
         </div>
         <div class="secondary">
