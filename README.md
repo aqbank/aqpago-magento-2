@@ -19,7 +19,7 @@ Com o módulo instalado e configurado você pode oferecer os seguintes meios de 
 
 
 ```sh
-composer require aqbank/aqpago-modulo-magento2
+composer require aqbank/aqpago-magento-2
 
 php bin/magento setup:upgrade
 

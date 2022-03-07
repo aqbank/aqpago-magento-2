@@ -1,13 +1,14 @@
 {
-	"name": "aqbank/aqpago-modulo-magento2",
+	"name": "aqbank/aqpago-magento-2",
 	"description": "Módulo de pagamento AQPAGO para Magento 2",
+	"version": "1.0.3",
 	"require": {
-		"aqbank/api-v2": "dev-master",
-		"picqer/php-barcode-generator": "2.*",
-        "magento/module-sales": "100.0.*",
-        "magento/module-checkout": "100.0.*",
-        "magento/module-payment": "100.0.*",
-        "magento/framework": "100.0.*"
+		"aqbank/aqpago-sdk-api-v2": "~1",
+		"picqer/php-barcode-generator": "~2",
+        "magento/module-sales": "~100.0",
+        "magento/module-checkout": "~100.0",
+        "magento/module-payment": "~100.0",
+        "magento/framework": "~100.0"
 	},
 	"type": "magento2-module",
 	"license": [
