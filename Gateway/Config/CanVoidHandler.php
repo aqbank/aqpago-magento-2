@@ -38,11 +38,11 @@ class CanVoidHandler implements ValueHandlerInterface
     public function handle(array $subject = [], $storeId = null)
     {
         $paymentDO = $this->subjectReader->readPayment($subject);
-
         $payment = $paymentDO->getPayment();
 
         if ($payment instanceof Payment) {
-            return empty($payment->getAdditionalInformation('Id Refund')) && empty($payment->getAdditionalInformation('Id Cancel'));
+            return empty($payment->getAdditionalInformation('Id Refund')) &&
+                empty($payment->getAdditionalInformation('Id Cancel'));
         }
 
         return false;

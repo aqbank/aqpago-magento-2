@@ -3,7 +3,6 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Aqbank\Aqpago\Gateway\Command;
 
 use Aqbank\Aqpago\Gateway\Helper\SubjectReader;
@@ -17,20 +16,17 @@ use Magento\Payment\Gateway\CommandInterface;
 use Aqbank\Aqpago\Model\Adapter\AqpagoAdapterFactory;
 use Aqbank\Aqpago\Model\Adapter\AqpagoSearchAdapter;
 
-/**
- * Class CaptureStrategyCommand
- */
 class CaptureStrategyCommand implements CommandInterface
 {
     /**
      * Aqpago authorize and capture command
      */
-    const SALE = 'sale';
+    public const SALE = 'sale';
 
     /**
      * Aqpago capture command
      */
-    const CAPTURE = 'settlement';
+    public const CAPTURE = 'settlement';
 
     /**
      * @var CommandPoolInterface
@@ -86,8 +82,7 @@ class CaptureStrategyCommand implements CommandInterface
         SubjectReader $subjectReader,
         AqpagoAdapterFactory $aqpagoAdapterFactory,
         AqpagoSearchAdapter $aqpagoSearchAdapter
-    )
-    {
+    ) {
         $this->commandPool = $commandPool;
         $this->transactionRepository = $repository;
         $this->filterBuilder = $filterBuilder;
@@ -96,7 +91,7 @@ class CaptureStrategyCommand implements CommandInterface
         $this->aqpagoAdapterFactory = $aqpagoAdapterFactory;
         $this->aqpagoSearchAdapter = $aqpagoSearchAdapter;
     }
-	
+    
     /**
      * @inheritdoc
      * @throws \Magento\Framework\Exception\NotFoundException
@@ -107,11 +102,13 @@ class CaptureStrategyCommand implements CommandInterface
         $paymentDO = $this->subjectReader->readPayment($commandSubject);
 
         $command = $this->getCommand($paymentDO);
-		
-		$logger = new \Monolog\Logger('aqpago');
-		$logger->pushHandler(new \Monolog\Handler\StreamHandler(BP . '/var/log/aqpago_strategy.log', \Monolog\Logger::DEBUG));
-		$logger->info('Log response');
-		$logger->info('command ' . $command);
+        
+        $logger = new \Monolog\Logger('aqpago');
+        $logger->pushHandler(
+            new \Monolog\Handler\StreamHandler(BP . '/var/log/aqpago_strategy.log', \Monolog\Logger::DEBUG)
+        );
+        $logger->info('Log response');
+        $logger->info('command ' . $command);
 
         $this->commandPool->get($command)->execute($commandSubject);
     }
@@ -127,9 +124,9 @@ class CaptureStrategyCommand implements CommandInterface
         $payment = $paymentDO->getPayment();
 
         if ($payment->getAdditionalInformation('Status') != 'ORDER_PAID') {
-			return self::SALE;
+            return self::SALE;
         }
-		
+        
         return self::CAPTURE;
     }
 }

@@ -6,12 +6,11 @@
 
 namespace Aqbank\Aqpago\Gateway\Validator;
 
-/**
- * Class AuthorizeValidator
- */
 class SettlementCodeValidator extends GeneralResponseValidator
 {
     /**
+     * Method getResponseValidators
+     *
      * @return array
      */
     protected function getResponseValidators()
@@ -20,35 +19,32 @@ class SettlementCodeValidator extends GeneralResponseValidator
             parent::getResponseValidators(),
             [
                 function ($response) {
-					
-					print_r($response);
-					die('settlem');
-					
-					$message_response = [
-						'ORDER_CREATE' 				=> 'order created.',
-						'ORDER_WAITING' 			=> 'order waiting payment.',
-						'ORDER_IN_ANALYSIS' 		=> 'order in analysis.',
-						'ORDER_NOT_PAID' 			=> 'order not paid.',
-						'ORDER_PAID' 				=> 'order paid.',
-						'ORDER_PARTIAL_PAID'		=> 'partially paid order.',
-						'ORDER_CANCELED'			=> 'order canceled.',
-						'ORDER_REVERSED'			=> 'order reversed.',
-						'ORDER_PARTIAL_REVERSED'	=> 'order partial reversed.',
-						'ORDER_CHARGE_BACK'			=> 'order with charge back.',
-						'ORDER_DISPUTE'				=> 'order in dispute.',
-						'ORDER_FAILED'				=> 'order failed.',
-					];
-					
+
+                    $message_response = [
+                        'ORDER_CREATE'              => 'order created.',
+                        'ORDER_WAITING'             => 'order waiting payment.',
+                        'ORDER_IN_ANALYSIS'         => 'order in analysis.',
+                        'ORDER_NOT_PAID'            => 'order not paid.',
+                        'ORDER_PAID'                => 'order paid.',
+                        'ORDER_PARTIAL_PAID'        => 'partially paid order.',
+                        'ORDER_CANCELED'            => 'order canceled.',
+                        'ORDER_REVERSED'            => 'order reversed.',
+                        'ORDER_PARTIAL_REVERSED'    => 'order partial reversed.',
+                        'ORDER_CHARGE_BACK'         => 'order with charge back.',
+                        'ORDER_DISPUTE'             => 'order in dispute.',
+                        'ORDER_FAILED'              => 'order failed.',
+                    ];
+                    
                     return [
                         in_array(
                             $response->getStatus(),
                             [
-								'ORDER_PAID',
-								'ORDER_IN_ANALYSIS',
-								'ORDER_PARTIAL_PAID',
+                                'ORDER_PAID',
+                                'ORDER_IN_ANALYSIS',
+                                'ORDER_PARTIAL_PAID',
                             ]
                         ),
-						sprintf('[Aqpago %d] - %s', $response->getStatus(), $message_response[ $response->getStatus() ])
+                        sprintf('[Aqpago %d] - %s', $response->getStatus(), $message_response[ $response->getStatus() ])
                     ];
                 }
             ]

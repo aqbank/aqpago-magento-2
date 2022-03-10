@@ -8,14 +8,16 @@ namespace Aqbank\Aqpago\Model\Adminhtml\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
-/**
- * Class Environment
- */
 class Environment implements ArrayInterface
 {
-    const ENVIRONMENT_PRODUCTION 	= 'production';
-    const ENVIRONMENT_TEST 			= 'sandbox';
-	
+    public const ENVIRONMENT_PRODUCTION    = 'production';
+    public const ENVIRONMENT_TEST          = 'sandbox';
+    
+    /**
+     * Method toOptionArray
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         return [

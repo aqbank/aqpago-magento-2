@@ -7,13 +7,12 @@ namespace Aqbank\Aqpago\Model\Adminhtml\Source;
 
 use Magento\Payment\Model\Method\AbstractMethod;
 
-/**
- * Class PaymentAction
- */
 class PaymentAction implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * {@inheritdoc}
+     * Method toOptionArray
+     *
+     * @return array
      */
     public function toOptionArray()
     {

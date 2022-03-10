@@ -30,8 +30,7 @@ class CaptureRequest implements BuilderInterface
     public function __construct(
         ConfigInterface $config,
         SubjectReader $subjectReader
-    )
-    {
+    ) {
         $this->config = $config;
         $this->subjectReader = $subjectReader;
     }
@@ -45,9 +44,7 @@ class CaptureRequest implements BuilderInterface
     public function build(array $buildSubject)
     {
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
-
         $order = $paymentDO->getOrder();
-
         $payment = $paymentDO->getPayment();
 
         if (!$payment instanceof OrderPaymentInterface) {

@@ -13,8 +13,4 @@
    <event name="sales_order_save_after">
         <observer name="aqbank_sales_order_save_after" instance="Aqbank\Aqpago\Observer\OrderSaveAfter" />
     </event>
-	
-    <event name="payment_method_is_active">
-        <observer name="aqbank_payment_methods" instance="Aqbank\Aqpago\Observer\PaymentMethodAvailable" />
-    </event>
 </config>

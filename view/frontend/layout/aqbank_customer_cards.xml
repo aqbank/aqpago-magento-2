@@ -14,7 +14,7 @@
             </container>
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="Aqbank\Aqpago\Block\Custumer\Cards" name="aqbank.costumer.cards" template="Aqbank_Aqpago::customer/cards.phtml"  cacheable="false" >
+            <block class="Aqbank\Aqpago\Block\Customer\Cards" name="aqbank.costumer.cards" template="Aqbank_Aqpago::customer/cards.phtml"  cacheable="false" >
             </block>
         </referenceContainer>
 	</body>

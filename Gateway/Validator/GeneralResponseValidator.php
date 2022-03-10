@@ -29,15 +29,15 @@ class GeneralResponseValidator extends AbstractValidator
     }
 
     /**
-     * @inheritdoc
+     * Method validate
+     *
+     * @param array $validationSubject
      */
     public function validate(array $validationSubject)
     {
         $response = $this->subjectReader->readResponseObject($validationSubject);
-
         $isValid = true;
         $errorMessages = [];
-
         foreach ($this->getResponseValidators() as $validator) {
             $validationResult = $validator($response);
 
@@ -45,60 +45,70 @@ class GeneralResponseValidator extends AbstractValidator
                 $isValid = $validationResult[0];
 
                 if (is_array($validationResult[1])) {
-                    $errorMessages = array_merge($errorMessages, $validationResult[1]);
+                    $errorMessages[] = $validationResult[1];
                 }
             }
         }
+
+        $errorMessages = array_merge([], ...$errorMessages);
 
         return $this->createResult($isValid, $errorMessages);
     }
 
     /**
+     * Method getResponseValidators
+     *
      * @return array
      */
     protected function getResponseValidators()
     {
         return [
             function ($response) {
-				
-				if(method_exists($response, 'getStatus')){
-					$result = true;
-					$message = 'Aqpago error response.';
-				}
-				else {
-					//$logger = new \Monolog\Logger('aqpago');
-					//$logger->pushHandler(new \Monolog\Handler\StreamHandler(BP . '/var/log/aqpago_erros.log', \Monolog\Logger::DEBUG));
-					//$logger->info('Log Aqpago response');
-					//$logger->info('response: ' . json_encode($response));
-					
-					$result 	= false;
-					$response 	= json_decode($response, true);
-					$message 	= '';
-					
-					if(isset($response['erro'])) {
-						foreach($response['erro'] as $k => $erro){
-							if(is_array($erro)) {
-								foreach($erro as $k => $msg){
-									if(!is_array($msg)) {
-										$message .= ' ' . $msg;
-									}
-								}
-							}
-							else {
-								$message .= ' ' . $erro;
-							}
-						}
-					}
-					else {
-						$message = 'Aqpago error response.';
-					}
-				}
-				
+                
+                if (method_exists($response, 'getStatus')) {
+                    $result = true;
+                    $message = 'Aqpago error response.';
+                } else {
+                    $result     = false;
+                    $response   = json_decode($response, true);
+                    $message    = '';
+                    
+                    if (isset($response['erro'])) {
+                        $message .= $this->processResponseArr($response);
+                    } else {
+                        $message = 'Aqpago error response.';
+                    }
+                }
+
                 return [
                     $result,
                     __($message)
                 ];
             }
         ];
+    }
+
+    /**
+     * Method processResponseArr
+     *
+     * @param array $response
+     * @return string
+     */
+    public function processResponseArr(array $response)
+    {
+        $message = '';
+        foreach ($response['erro'] as $k => $erro) {
+            if (is_array($erro)) {
+                foreach ($erro as $k => $msg) {
+                    if (!is_array($msg)) {
+                        $message .= ' ' . $msg;
+                    }
+                }
+            } else {
+                $message .= ' ' . $erro;
+            }
+        }
+        
+        return $message;
     }
 }

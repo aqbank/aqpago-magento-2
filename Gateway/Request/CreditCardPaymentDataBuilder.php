@@ -1,45 +1,35 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Aqbank\Aqpago\Gateway\Request;
 
-/**
- * Payment Data Builder
- */
 class CreditCardPaymentDataBuilder extends AbstractPaymentDataBuilder
 {
     /**
-     * retorna o tipo de transação
+     * Method getTypeTransaction
+     *
      * @param array $buildSubject
      * @return string
      */
-    public function getTypeTransaction(array $buildSubject=[])
+    public function getTypeTransaction(array $buildSubject = [])
     {
-        $paymentDO 	= $this->subjectReader->readPayment($buildSubject);
-        $payment 	= $paymentDO->getPayment();
-		
+        $paymentDO  = $this->subjectReader->readPayment($buildSubject);
+        $payment    = $paymentDO->getPayment();
         return $payment->getAdditionalInformation('type_payment');
     }
-	
     /**
-     * retorna o tipo de transação
+     * Retorna o tipo de transação
+     *
      * @param array $buildSubject
      * @return bool|mixed
      */
-    public function is3DS(array $buildSubject=[])
+    public function is3DS(array $buildSubject = [])
     {
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
         $payment = $paymentDO->getPayment();
         $auth = false;
-
         if ($payment->getAdditionalInformation('creditCard3Ds')) {
             $auth = $payment->getAdditionalInformation('creditCard3Ds');
         }
-
         return $auth;
     }
-
 }

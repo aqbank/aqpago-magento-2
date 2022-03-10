@@ -10,15 +10,6 @@ use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Helper;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 
-/*
-use Rede\API30\Ecommerce\RedeEcommerce;
-use Rede\Transaction;
-*/
-
-
-/**
- * Class SubjectReader
- */
 class SubjectReader
 {
     /**
@@ -31,10 +22,6 @@ class SubjectReader
     public function readResponseObject(array $subject)
     {
         $response = Helper\SubjectReader::readResponse($subject);
-
-//        if (!isset($response['object']) || !is_object($response['object'])) {
-//            throw new \InvalidArgumentException('Response object does not exist');
-//        }
 
         return $response['object'];
     }
@@ -131,24 +118,31 @@ class SubjectReader
         }
 
         return $transaction->paypal;
-    }    
-	
-	public function readStatusMessage($status)
+    }
+
+    /**
+     * Method readStatusMessage
+     *
+     * @param string $status
+     *
+     * @return string
+     */
+    public function readStatusMessage($status)
     {
-		$message_response = [
-			'ORDER_CREATE' 				=> 'order created.',
-			'ORDER_WAITING' 			=> 'order waiting payment.',
-			'ORDER_IN_ANALYSIS' 		=> 'order in analysis.',
-			'ORDER_NOT_PAID' 			=> 'order not paid.',
-			'ORDER_PAID' 				=> 'order paid.',
-			'ORDER_PARTIAL_PAID'		=> 'partially paid order.',
-			'ORDER_CANCELED'			=> 'order canceled.',
-			'ORDER_REVERSED'			=> 'order reversed.',
-			'ORDER_PARTIAL_REVERSED'	=> 'order partial reversed.',
-			'ORDER_CHARGE_BACK'			=> 'order with charge back.',
-			'ORDER_DISPUTE'				=> 'order in dispute.',
-			'ORDER_FAILED'				=> 'order failed.',
-		];
+        $message_response = [
+            'ORDER_CREATE'              => 'order created.',
+            'ORDER_WAITING'             => 'order waiting payment.',
+            'ORDER_IN_ANALYSIS'         => 'order in analysis.',
+            'ORDER_NOT_PAID'            => 'order not paid.',
+            'ORDER_PAID'                => 'order paid.',
+            'ORDER_PARTIAL_PAID'        => 'partially paid order.',
+            'ORDER_CANCELED'            => 'order canceled.',
+            'ORDER_REVERSED'            => 'order reversed.',
+            'ORDER_PARTIAL_REVERSED'    => 'order partial reversed.',
+            'ORDER_CHARGE_BACK'         => 'order with charge back.',
+            'ORDER_DISPUTE'             => 'order in dispute.',
+            'ORDER_FAILED'              => 'order failed.',
+        ];
 
         return $message_response[ $status ];
     }

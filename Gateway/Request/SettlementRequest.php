@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Aqbank\Aqpago\Gateway\Request;
 
@@ -30,8 +26,7 @@ class SettlementRequest implements BuilderInterface
     public function __construct(
         ConfigInterface $config,
         SubjectReader $subjectReader
-    )
-    {
+    ) {
         $this->config = $config;
         $this->subjectReader = $subjectReader;
     }

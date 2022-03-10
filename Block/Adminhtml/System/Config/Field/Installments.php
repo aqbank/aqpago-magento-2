@@ -1,16 +1,16 @@
 <?php
+
 namespace Aqbank\Aqpago\Block\Adminhtml\System\Config\Field;
 
 class Installments extends \Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray
 {
-
     /**
      * @var \Aqbank\Aqpago\Block\Adminhtml\System\Config\Field\Installment
      */
     protected $_installmentRenderer = null;
-
     /**
      * Prepare to render
+     *
      * @return void
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -33,9 +33,9 @@ class Installments extends \Magento\Config\Block\System\Config\Form\Field\FieldA
         $this->_addAfter = false;
         $this->_addButtonLabel = __('Add Rule');
     }
-
     /**
      * Return renderer for installments
+     *
      * @return Installment|\Magento\Framework\View\Element\BlockInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -43,7 +43,7 @@ class Installments extends \Magento\Config\Block\System\Config\Form\Field\FieldA
     {
         if (!$this->_installmentRenderer) {
             $this->_installmentRenderer = $this->getLayout()->createBlock(
-                '\Aqbank\Aqpago\Block\Adminhtml\System\Config\Field\Installment',
+                \Aqbank\Aqpago\Block\Adminhtml\System\Config\Field\Installment::class,
                 '',
                 ['data' => ['is_render_to_js_template' => true]]
             );

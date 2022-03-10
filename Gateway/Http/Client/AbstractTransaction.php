@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Aqbank\Aqpago\Gateway\Http\Client;
 
@@ -13,26 +9,23 @@ use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class AbstractTransaction
- */
 abstract class AbstractTransaction implements ClientInterface
 {
     /**
      * @var LoggerInterface
      */
     protected $logger;
-	
+    
     /**
      * @var Logger
      */
     protected $customLogger;
-	
+    
     /**
      * @var AqpagoAdapter
      */
     protected $adapter;
-	
+    
     /**
      * Constructor
      *
@@ -46,9 +39,11 @@ abstract class AbstractTransaction implements ClientInterface
         $this->customLogger = $customLogger;
         $this->adapter = $adapter;
     }
-	
+    
     /**
-     * @inheritdoc
+     * Method placeRequest
+     *
+     * @param TransferInterface $transferObject
      */
     public function placeRequest(TransferInterface $transferObject)
     {
@@ -69,12 +64,13 @@ abstract class AbstractTransaction implements ClientInterface
             $log['response'] = (array) $response['object'];
             $this->customLogger->debug($log);
         }
-		
+        
         return $response;
     }
 
     /**
      * Process http request
+     *
      * @param array $data
      */
     abstract protected function process(array $data);

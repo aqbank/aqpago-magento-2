@@ -5,14 +5,12 @@
  */
 namespace Aqbank\Aqpago\Model\Adapter;
 
-/**
- * Class Aqpago Search Adapter
- */
 class AqpagoSearchAdapter
 {
     /**
+     * Method id
+     *
      * @return TextNode
-     * @SuppressWarnings(PHPMD.ShortMethodName)
      */
     public function id()
     {
@@ -20,6 +18,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method merchantAccountId
+     *
      * @return MultipleValueNode
      */
     public function merchantAccountId()
@@ -28,6 +28,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method orderId
+     *
      * @return TextNode
      */
     public function orderId()
@@ -36,6 +38,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method paypalPaymentId
+     *
      * @return TextNode
      */
     public function paypalPaymentId()
@@ -44,6 +48,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method createdUsing
+     *
      * @return MultipleValueNode
      */
     public function createdUsing()
@@ -52,6 +58,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method type
+     *
      * @return MultipleValueNode
      */
     public function type()
@@ -60,6 +68,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method createdAt
+     *
      * @return RangeNode
      */
     public function createdAt()
@@ -68,6 +78,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method amount
+     *
      * @return RangeNode
      */
     public function amount()
@@ -76,6 +88,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method status
+     *
      * @return MultipleValueNode
      */
     public function status()
@@ -84,6 +98,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method settlementBatchId
+     *
      * @return TextNode
      */
     public function settlementBatchId()
@@ -92,6 +108,8 @@ class AqpagoSearchAdapter
     }
 
     /**
+     * Method paymentInstrumentType
+     *
      * @return MultipleValueNode
      */
     public function paymentInstrumentType()

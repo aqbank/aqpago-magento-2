@@ -2,33 +2,29 @@
 
 namespace Aqbank\Aqpago\Model\Config\Backend;
 
-/**
- * Class Payments
- * @package Aqbank\Aqpago\Model\Config
- */
 class Payments implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * @var array
+     * @var payments
      */
-    protected $payments = array(
-
-    );
+    protected $payments = [];
 
     /**
+     * Method toOptionArray
+     *
      * @return array
      */
     public function toOptionArray()
     {
         return [
-			[
-				'value' => 'aqpago', 
-				'label' => 'Cartão de Crédito'
-			],
-			[
-				'value' => 'aqpago_boleto', 
-				'label' => 'Boleto Bancário'
-			],
-		];
+            [
+                'value' => 'aqpago',
+                'label' => 'Cartão de Crédito'
+            ],
+            [
+                'value' => 'aqpago_boleto',
+                'label' => 'Boleto Bancário'
+            ],
+        ];
     }
 }

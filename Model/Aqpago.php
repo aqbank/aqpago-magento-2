@@ -5,17 +5,27 @@
  */
 namespace Aqbank\Aqpago\Model;
 
-/**
- * Class ConfigProvider
- */
 class Aqpago extends \Magento\Payment\Model\Method\Cc
 {
-    const METHOD_CODE = 'aqpago';
-
+    public const METHOD_CODE = 'aqpago';
+    /**
+     * @var _code
+     */
     protected $_code = self::METHOD_CODE;
+    /**
+     * @var _isGateway
+     */
     protected $_isGateway = true;
+    /**
+     * @var _canCapture
+     */
     protected $_canCapture= true;
+    /**
+     * @var _canRefund
+     */
     protected $_canRefund = true;
+    /**
+     * @var _canRefundInvoicePartial
+     */
     protected $_canRefundInvoicePartial = true;
-
 }

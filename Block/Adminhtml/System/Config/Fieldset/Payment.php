@@ -86,7 +86,7 @@ class Payment extends Fieldset
 
         return $html;
     }
-	
+    
     /**
      * Return header comment part of html for payment solution
      *
@@ -98,7 +98,7 @@ class Payment extends Fieldset
     {
         return '';
     }
-	
+    
     /**
      * Get collapsed state on-load
      *
@@ -138,7 +138,7 @@ class Payment extends Fieldset
                 }
             }
         });";
-		
+        
         return $this->_jsHelper->getScript($script);
     }
 }

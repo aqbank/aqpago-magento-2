@@ -8,9 +8,6 @@ namespace Aqbank\Aqpago\Model\Adapter;
 use Aqbank\Aqpago\Gateway\Config\Config;
 use Magento\Framework\ObjectManagerInterface;
 
-/**
- * This factory is preferable to use for Aqpago adapter instance creation.
- */
 class AqpagoAdapterFactory
 {
     /**
@@ -34,7 +31,9 @@ class AqpagoAdapterFactory
     }
 
     /**
-     * @param null $storeId
+     * Method create
+     *
+     * @param int|null $storeId
      * @return mixed
      */
     public function create($storeId = null)

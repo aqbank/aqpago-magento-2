@@ -3,7 +3,6 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Aqbank\Aqpago\Gateway\Response;
 
 use Magento\Payment\Gateway\Response\HandlerInterface;
@@ -11,7 +10,6 @@ use Aqbank\Aqpago\Gateway\Helper\SubjectReader;
 
 class SettlementDetailsHandler implements HandlerInterface
 {
-
     /**
      * @var SubjectReader
      */
@@ -38,31 +36,5 @@ class SettlementDetailsHandler implements HandlerInterface
     public function handle(array $handlingSubject, array $response)
     {
         $paymentDO = $this->subjectReader->readPayment($handlingSubject);
-		
-		//die('SettlementDetailsHandler');
-		
-        /**
-		 
-        $response_obj = $this->subjectReader->readTransaction($response);
-
-        if (!is_null($response_obj)) {
-            $payment = $paymentDO->getPayment();
-
-            $payment->setAdditionalInformation("Codigo de Retorno", $response_obj->getReturnCode());
-            $payment->setAdditionalInformation("Messagem de Retorno", $response_obj->getReturnMessage());
-
-            $payment->setAdditionalInformation("Nsu", $response_obj->getNsu());
-            $payment->setAdditionalInformation("Código da autorização", $response_obj->getAuthorizationCode());
-
-            $authorization = $response_obj->getAuthorization();
-
-            if (!is_null($authorization)) {
-                $payment->setAdditionalInformation("Status da autorização", $authorization->getStatus());
-            }
-            $payment->setTransactionId($response_obj->getTid());
-            $payment->setParentTransactionId($payment->getTransactionId());
-            $payment->setIsTransactionClosed(false)->setTransactionAdditionalInfo('Reponse', $response_obj->jsonSerialize());
-        }
-		*/
     }
 }

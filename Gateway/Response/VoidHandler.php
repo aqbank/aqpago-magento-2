@@ -53,37 +53,36 @@ class VoidHandler extends TransactionIdHandler
         return true;
     }
 
+    /**
+     * Method handle
+     *
+     * @param array $handlingSubject
+     * @param array $response
+     *
+     * @return void
+     */
     public function handle(array $handlingSubject, array $response)
     {
         $paymentDO = $this->subjectReader->readPayment($handlingSubject);
-		
-		//die('TransactionIdHandler');
-		
         /**
          * @var Transaction
          */
         $response_obj = $this->subjectReader->readTransaction($response);
 
-        if (!is_null($response_obj)) {
+        if (!$response_obj === null) {
             $payment = $paymentDO->getPayment();
-			/*
-            $payment->setAdditionalInformation("Codigo de Retorno", $response_obj->getReturnCode());
-            $payment->setAdditionalInformation("Messagem de Retorno", $response_obj->getReturnMessage());
-
-            $payment->setAdditionalInformation("Nsu", $response_obj->getNsu());
-            $payment->setAdditionalInformation("Id Refund", $response_obj->getRefundId());
-            $payment->setAdditionalInformation("Id Cancel", $response_obj->getCancelId()); */
-			
-			$payment->setAdditionalInformation("Reponse", $response_obj->jsonSerialize());
-			
-			$_payments = json_encode($response_obj->getPayments());
-			$_payments = json_decode($_payments, true);
-			
+            $payment->setAdditionalInformation(
+                "Reponse",
+                $response_obj->jsonSerialize()
+            );
+            $_payments = json_encode($response_obj->getPayments());
+            $_payments = json_decode($_payments, true);
             $payment->setTransactionId($response_obj->getTid() . '-cancel');
             $payment->setParentTransactionId($payment->getTransactionId());
-            $payment->setIsTransactionClosed(false)->setTransactionAdditionalInfo(Transaction::RAW_DETAILS, $_payments);		
-		}
-		
+            $payment->setIsTransactionClosed(false)
+                ->setTransactionAdditionalInfo(Transaction::RAW_DETAILS, $_payments);
+        }
+
         parent::handle($handlingSubject, $response);
     }
 }

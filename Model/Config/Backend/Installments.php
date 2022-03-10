@@ -8,7 +8,6 @@ class InstallmentsValues extends \Magento\Framework\App\Config\Value
      * @var \Magento\Framework\Math\Random
      */
     protected $mathRandom;
-
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -28,14 +27,14 @@ class InstallmentsValues extends \Magento\Framework\App\Config\Value
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
-    )
-    {
+    ) {
         $this->mathRandom = $mathRandom;
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
     }
 
     /**
      * Prepare data before save
+     *
      * @return $this
      */
     public function beforeSave()
@@ -63,26 +62,27 @@ class InstallmentsValues extends \Magento\Framework\App\Config\Value
             }
         }
 
-        $this->setValue(serialize($result));
+        $this->setValue(\Magento\Framework\Serialize\SerializerInterface::serialize($result));
         return $this;
     }
 
     /**
      * Process data after load
+     *
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     protected function _afterLoad()
     {
         $value = $this->getValue();
-        $value = unserialize($value);
+        $value = \Magento\Framework\Serialize\SerializerInterface::unserialize($value);
         if (is_array($value)) {
             $value = $this->encodeArrayFieldValue($value);
             $this->setValue($value);
         }
         return $this;
     }
-
+    
     /**
      * Encode value to be used in \Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray
      *

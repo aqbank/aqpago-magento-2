@@ -1,0 +1,80 @@
+<table name="aqbank_aqpago_cards" resource="default" engine="innodb"
+    comment="Aqbank Aqpago Cards Save">
+    <column xsi:type="int" name="entity_id" unsigned="false"
+    nullable="false" identity="true" comment="entity_id"/>
+    <column xsi:type="int" name="customer_id" unsigned="true"
+    nullable="true" identity="false" default="0" comment="customer_id"/>
+    <column xsi:type="varchar" name="aqpago_id" unsigned="true"
+    nullable="true" length="255" comment="aqpago_id"/>
+    <column xsi:type="varchar" name="payment_id" unsigned="true"
+    nullable="true" length="255" comment="payment_id"/>
+    <column xsi:type="varchar" name="surname_card" unsigned="true"
+    nullable="true" length="255" comment="payment_id"/>
+    <column xsi:type="varchar" name="name_card" unsigned="true"
+    nullable="true" length="255" comment="name_card"/>
+    <column xsi:type="int" name="valid_month" unsigned="true"
+    nullable="true" default="0" comment="valid_month"/>
+    <column xsi:type="int" name="valid_year" unsigned="true"
+    nullable="true" default="0" comment="valid_year"/>
+    <column xsi:type="varchar" name="number_card" unsigned="true"
+    nullable="true" length="255" comment="number_card"/>
+    <column xsi:type="varchar" name="flag" unsigned="true"
+    nullable="true" length="30" comment="flag"/>
+    <column xsi:type="int" name="is_active" unsigned="true"
+    nullable="true" default="0" comment="is_active"/>
+    <column xsi:type="int" name="is_confirm" unsigned="true"
+    nullable="true" default="0" comment="is_confirm"/>
+    <column xsi:type="int" name="expired" unsigned="true"
+    nullable="true" default="0" comment="expired"/>
+    <column xsi:type="decimal" name="confirm_price" unsigned="true"
+    nullable="true" scale="2" default="0.00" comment="confirm_price"/>
+    <column xsi:type="varchar" name="ip_create" unsigned="true"
+    nullable="true" length="30" comment="ip_create"/>
+    <column xsi:type="varchar" name="ip_confirm" unsigned="true"
+    nullable="true" length="30" comment="ip_confirm"/>
+    <column xsi:type="datetime" name="create_at" on_update="false"
+    nullable="true" comment="create_at"/>
+    <column xsi:type="datetime" name="confirm_at" on_update="false"
+    nullable="true" comment="confirm_at"/>
+    <column xsi:type="datetime" name="confirm_at" on_update="false"
+    nullable="true" comment="confirm_at"/>
+    <column xsi:type="datetime" name="value" on_update="false"
+    nullable="true" comment="Value"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+        <column name="entity_id"/>
+    </constraint>
+    <index referenceId="aqbank_aqpago_cards" indexType="btree">
+        <column name="customer_id"/>
+        <column name="number_card"/>
+    </index>
+</table>
+<table name="aqbank_aqpago_cards_address" resource="default" engine="innodb"
+    comment="Aqbank Aqpago Cards Address">
+    <column xsi:type="int" name="entity_id" unsigned="false"
+    nullable="false" identity="true" comment="entity_id"/>
+    <column xsi:type="int" name="customer_id" unsigned="true"
+    nullable="true" identity="false" default="0" comment="customer_id"/>
+    <column xsi:type="varchar" name="postcode" unsigned="true"
+    nullable="true" length="10" comment="postcode"/>
+    <column xsi:type="varchar" name="address" unsigned="true"
+    nullable="true" length="255" comment="address"/>
+    <column xsi:type="varchar" name="number" unsigned="true"
+    nullable="true" length="30" comment="number"/>
+    <column xsi:type="varchar" name="complement" unsigned="true"
+    nullable="true" length="100" comment="complement"/>
+    <column xsi:type="varchar" name="district" unsigned="true"
+    nullable="true" length="50" comment="district"/>
+    <column xsi:type="varchar" name="city" unsigned="true"
+    nullable="true" length="50" comment="city"/>
+    <column xsi:type="varchar" name="state" unsigned="true"
+    nullable="true" length="30" comment="state"/>
+    <column xsi:type="varchar" name="ip_create" unsigned="true"
+    nullable="true" length="50" comment="ip_create"/>
+    <column xsi:type="varchar" name="ip_create" unsigned="true"
+    nullable="true" length="50" comment="ip_create"/>
+    <column xsi:type="datetime" name="create_at" on_update="false"
+    nullable="true" comment="create_at"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+        <column name="entity_id"/>
+    </constraint>
+</table>

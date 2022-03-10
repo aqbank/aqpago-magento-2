@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Aqbank\Aqpago\Controller\Card;
 
@@ -8,8 +8,15 @@ use Magento\Framework\App\Action\Action;
 
 class NewCard extends Action
 {
+    /**
+     * @var $resultPageFactory
+     */
     protected $resultPageFactory;
-    
+
+    /**
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -17,7 +24,12 @@ class NewCard extends Action
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }
-	
+
+    /**
+     * Method execute
+     *
+     * @return object
+     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();

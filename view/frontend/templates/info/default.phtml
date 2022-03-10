@@ -11,64 +11,72 @@
 $specificInfo = $block->getSpecificInformation();
 $paymentTitle = $block->getMethod()->getConfigData('title', $block->getInfo()->getOrder()->getStoreId());
 ?>
-<?php echo $block->escapeHtml($paymentTitle) ?>
+<?= $block->escapeHtml($paymentTitle) ?>
+<?php if ($specificInfo): ?>
+<div style="position: relative;margin-bottom: 115px;">
+<table class="data-table admin__table-secondary">
+    <?php foreach ($specificInfo as $label => $value): ?>
+        <tr>
+        <th><?= $block->escapeHtml($label) ?>:</th>
+        <td>
+        <?php if ($label == 'ticket_url' || $label == 'Boleto'): ?>
+            <button class="action-primary" type="button" 
+            onClick="window.open('<?= $block->escapeUrl($value); ?>','boleto');" 
+            title="<?= $block->escapeHtml(__('Open')) ?>">
+            <?= $block->escapeHtml(__('Open')) ?>
+            </button>
+        <?php else: ?>
+            <?php if ($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
+                <button class="action-primary" type="button" 
+                data-trigger="barcode" title="<?= $block->escapeHtmlAttr(__('View')) ?>">
+                <?= $block->escapeHtml(__('View')) ?>
+                </button>
+            <?php else: ?>
+                <?= /* @noEscape */ nl2br(
+                    $block->escapeHtml(implode("\n", $block->getValueAsArray($value, true)))
+                ) ?>
+            <?php endif ?>
+            <?php endif ?>
+    </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
 
-<?php if ($specificInfo) : ?>
-	<div style="position: relative;margin-bottom: 115px;">
-		<table class="data-table admin__table-secondary">
-		<?php foreach ($specificInfo as $label => $value) : ?>
-			<tr>
-				<th><?php echo $block->escapeHtml($label) ?>:</th>
-				<td>
-					<?php if($label == 'ticket_url' || $label == 'Boleto'): ?>
-						<button class="action-primary" type="button" onClick="window.open('<?php echo $value; ?>','boleto');" title="<?php echo __('Open') ?>"><?php echo __('Open') ?></button>
-					<?php else: ?>
-						<?php if($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
-							<button class="action-primary" type="button" data-trigger="barcode" title="<?php echo __('View') ?>"><?php echo __('View') ?></button>
-						<?php else: ?>
-							<?php echo /* @noEscape */ nl2br($block->escapeHtml(implode("\n", $block->getValueAsArray($value, true)))) ?>
-						<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-		<?php endforeach; ?>
-		</table>
-		
-		<?php foreach ($specificInfo as $label => $value) : ?>
-			<?php if($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
-				<div 
- data-bind="mageInit: {
-        'Magento_Ui/js/modal/modal':{
+    <?php foreach ($specificInfo as $label => $value): ?>
+        <?php if ($label == 'ticket_bar_code' || $label == 'Código de Barras'): ?>
+            <div
+            data-bind="mageInit: {
+            'Magento_Ui/js/modal/modal':{
             'type': 'popup',
             'title': 'Código de barras',
-			'modalClass':'barcode-modal',
-			'innerScroll':true,
+            'modalClass':'barcode-modal',
+            'innerScroll':true,
             'trigger': '[data-trigger=barcode]',
             'responsive': true,
             'buttons': [{
-				text: jQuery.mage.__('Copy barcode'),
-                class: 'action primary checkout aqbank_place_order_button',
-				click: function () {
-					copyBarCode();
-					this.closeModal();
-				}
+            text: jQuery.mage.__('Copy barcode'),
+            class: 'action primary checkout aqbank_place_order_button',
+            click: function () {
+            copyBarCode();
+            this.closeModal();
+            }
             }]
-        }}"				
-				style="display:none;background:#ffffff;padding: 15px 10px;min-width: 600px;text-align: center;">
-					<?php $block->getBarCodeImage($value) ?>
-					<input type="text" id="barcode-copy" value="<?php echo $value ?>" style="width: 100%;border: 0px;text-align: center;" />
-				</div>
-			<?php endif ?>
-		<?php endforeach; ?>
-	</div>
+            }}"             
+            style="display:none;background:#ffffff;padding: 15px 10px;min-width: 600px;text-align: center;">
+            <?= $block->escapeHtml($block->getBarCodeImage($value)) ?>
+            <input type="text" id="barcode-copy" value="<?= $block->escapeHtmlAttr($value) ?>" 
+            style="width: 100%;border: 0px;text-align: center;" />
+            </div>
+        <?php endif ?>
+    <?php endforeach; ?>
+</div>
 <script>
 function copyBarCode() {
-	var copyText = document.getElementById("barcode-copy");
-	copyText.select();
-	copyText.setSelectionRange(0, 99999);
-	navigator.clipboard.writeText(copyText.value);
+var copyText = document.getElementById("barcode-copy");
+copyText.select();
+copyText.setSelectionRange(0, 99999);
+navigator.clipboard.writeText(copyText.value);
 }
 </script>
 <?php endif;?>
-
-<?php echo $block->getChildHtml() ?>
+<?= $block->getChildHtml() ?>

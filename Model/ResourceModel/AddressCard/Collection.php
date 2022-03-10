@@ -4,13 +4,23 @@ namespace Aqbank\Aqpago\Model\ResourceModel\AddressCard;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
-	protected $_idFieldName = 'entity_id';
-	protected $_eventPrefix = 'aqbank_aqpago_cards_address_collection';
-	protected $_eventObject = 'cards_address_collection';
-	
-	
-	protected function _construct()
-	{
-		$this->_init('Aqbank\Aqpago\Model\AddressCard', 'Aqbank\Aqpago\Model\ResourceModel\AddressCard');
-	}
+    /**
+     * @var _idFieldName
+     */
+    protected $_idFieldName = 'entity_id';
+    /**
+     * @var _eventPrefix
+     */
+    protected $_eventPrefix = 'aqbank_aqpago_cards_address_collection';
+    /**
+     * @var _eventObject
+     */
+    protected $_eventObject = 'cards_address_collection';
+    /**
+     * Method _construct
+     */
+    protected function _construct()
+    {
+        $this->_init(Aqbank\Aqpago\Model\AddressCard::class, Aqbank\Aqpago\Model\ResourceModel\AddressCard::class);
+    }
 }

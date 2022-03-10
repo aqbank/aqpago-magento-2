@@ -10,7 +10,6 @@ use Magento\Payment\Gateway\Http\TransferFactoryInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Gateway\ConfigInterface;
 
-
 class TransferFactory implements TransferFactoryInterface
 {
     /**
@@ -35,7 +34,6 @@ class TransferFactory implements TransferFactoryInterface
         $this->transferBuilder = $transferBuilder;
         $this->config = $config;
     }
-
     /**
      * Builds gateway transfer object
      *
@@ -44,8 +42,6 @@ class TransferFactory implements TransferFactoryInterface
      */
     public function create(array $request)
     {
-      return $this->transferBuilder
-          ->setBody($request)
-          ->build();
+        return $this->transferBuilder->setBody($request)->build();
     }
 }

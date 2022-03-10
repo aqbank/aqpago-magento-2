@@ -3,49 +3,43 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Aqbank\Aqpago\Gateway\Config;
 
-/**
- * Class Config
- */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
-    const KEY_ENVIRONMENT = 'environment';
-    const KEY_ACTIVE = 'active';
-    const KEY_PV = 'pv';
-    const KEY_TOKEN = 'token';
-    const KEY_SOFT_DESCRIPTOR = 'soft_descriptor';
-
-    const KEY_VERIFY_3DSECURE = 'verify_3dsecure';
-    const KEY_ENABLE_DEBIT = 'enable_debit';
-    const KEY_THRESHOLD_AMOUNT = 'threshold_amount';
-
-    const INSTALLMENTS = 'installments';
-    const NUMBER_INSTALLMENTS = 'number_installments';
-
-    const MIN_TOTAL_INSTALLMENTS = 'min_total_installments';
-
-    const KEY_MODULE = 'module';
-    const KEY_GATEWAY = 'gateway';
-
-    const VALUE_3DSECURE_ALL = 0;
-    const CODE_3DSECURE = 'three_d_secure';
-    const FRAUD_PROTECTION = 'fraudprotection';
-
+    public const KEY_ENVIRONMENT = 'environment';
+    public const KEY_ACTIVE = 'active';
+    public const KEY_PV = 'pv';
+    public const KEY_TOKEN = 'token';
+    public const KEY_SOFT_DESCRIPTOR = 'soft_descriptor';
+    public const KEY_VERIFY_3DSECURE = 'verify_3dsecure';
+    public const KEY_ENABLE_DEBIT = 'enable_debit';
+    public const KEY_THRESHOLD_AMOUNT = 'threshold_amount';
+    public const INSTALLMENTS = 'installments';
+    public const NUMBER_INSTALLMENTS = 'number_installments';
+    public const MIN_TOTAL_INSTALLMENTS = 'min_total_installments';
+    public const KEY_MODULE = 'module';
+    public const KEY_GATEWAY = 'gateway';
+    public const VALUE_3DSECURE_ALL = 0;
+    public const CODE_3DSECURE = 'three_d_secure';
+    public const FRAUD_PROTECTION = 'fraudprotection';
     /**
      * Return the country specific card type config
+     *
      * @return array
      */
     public function getInstallments()
     {
-        $installments = unserialize($this->getValue(self::INSTALLMENTS));
+        $installments = \Magento\Framework\Serialize\SerializerInterface::unserialize(
+            $this->getValue(self::INSTALLMENTS)
+        );
 
         return is_array($installments) ? $installments : [];
     }
-
+    
     /**
      * Return the country specific card type config
+     *
      * @return float
      */
     public function getNumberInstallments()
@@ -54,6 +48,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return is3DSEnabled
+     *
      * @return mixed
      */
     public function is3DSEnabled()
@@ -61,6 +57,11 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         return (bool) $this->getValue(self::KEY_VERIFY_3DSECURE);
     }
 
+    /**
+     * Return isDebitEnabled
+     *
+     * @return boolean
+     */
     public function isDebitEnabled()
     {
         return (bool) $this->getValue(self::KEY_ENABLE_DEBIT);
@@ -68,6 +69,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 
     /**
      * Return the country specific card type config
+     *
      * @return float
      */
     public function getMinTotalInstallments()
@@ -76,6 +78,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getModule
+     *
      * @return string
      */
     public function getModule()
@@ -84,6 +88,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getGateway
+     *
      * @return string
      */
     public function getGateway()
@@ -93,6 +99,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 
     /**
      * Check if 3d secure verification enabled
+     *
      * @return bool
      */
     public function isVerify3DSecure()
@@ -102,6 +109,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 
     /**
      * Get threshold amount for 3d secure
+     *
      * @return float
      */
     public function getThresholdAmount()
@@ -110,6 +118,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getSoftDescriptor
+     *
      * @return string
      */
     public function getSoftDescriptor()
@@ -118,6 +128,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getEnvironment
+     *
      * @return string
      */
     public function getEnvironment()
@@ -126,6 +138,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getPv
+     *
      * @return string
      */
     public function getPv()
@@ -134,6 +148,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * Return getToken
+     *
      * @return string
      */
     public function getToken()
@@ -141,8 +157,9 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         return $this->getValue(Config::KEY_TOKEN);
     }
 
-	
     /**
+     * Return hasFraudProtection
+     *
      * @return bool
      */
     public function hasFraudProtection()
@@ -152,22 +169,29 @@ class Config extends \Magento\Payment\Gateway\Config\Config
 
     /**
      * Get Payment configuration status
+     *
      * @return bool
      */
     public function isActive()
     {
         return (bool)$this->getValue(self::KEY_ACTIVE);
     }
-	
+    
     /**
+     * Return getConfigValue
+     *
+     * @param string $key
      * @return string
      */
     public function getConfigValue($key)
     {
         return $this->getValue(Config::$key);
     }
-	
+    
     /**
+     * Return getConfig
+     *
+     * @param string $key
      * @return string
      */
     public function getConfig($key)

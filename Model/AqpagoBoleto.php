@@ -5,16 +5,27 @@
  */
 namespace Aqbank\Aqpago\Model;
 
-/**
- * Class ConfigProvider
- */
 class AqpagoBoleto extends \Magento\Payment\Model\Method\Cc
 {
-    const METHOD_CODE = 'aqpago_boleto';
-
+    public const METHOD_CODE = 'aqpago_boleto';
+    /**
+     * @var _code
+     */
     protected $_code = self::METHOD_CODE;
+    /**
+     * @var _isGateway
+     */
     protected $_isGateway = true;
+    /**
+     * @var _canCapture
+     */
     protected $_canCapture= true;
+    /**
+     * @var _canRefund
+     */
     protected $_canRefund = true;
+    /**
+     * @var _canRefundInvoicePartial
+     */
     protected $_canRefundInvoicePartial = true;
 }

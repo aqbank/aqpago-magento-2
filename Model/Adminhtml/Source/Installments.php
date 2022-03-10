@@ -1,14 +1,13 @@
 <?php
 
-
 namespace Aqbank\Aqpago\Model\Adminhtml\Source;
-
-
 
 class Installments implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * {@inheritdoc}
+     * Method toOptionArray
+     *
+     * @return array
      */
     public function toOptionArray()
     {
@@ -22,5 +21,4 @@ class Installments implements \Magento\Framework\Option\ArrayInterface
             range(1, 12)
         );
     }
-
 }

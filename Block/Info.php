@@ -3,7 +3,6 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Aqbank\Aqpago\Block;
 
 use Magento\Framework\Phrase;
@@ -12,40 +11,41 @@ use Magento\Payment\Gateway\ConfigInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Aqbank\Aqpago\Helper\Data;
 
-/**
- * Class Info
- */
 class Info extends \Magento\Payment\Block\Info
 {
     /**
      * @var ConfigInterface
      */
     private $config;
-	
+    
+    /**
+     * @var _helperData
+     */
     private $_helperData;
-
     /**
      * @var string
      */
     protected $_template = 'Aqbank_Aqpago::info/default.phtml';
-	
+    
     /**
      * @param Context $context
      * @param ConfigInterface $config
+     * @param PriceCurrencyInterface $priceCurrency
+     * @param Data $helperData
      * @param array $data
      */
     public function __construct(
         Context $context,
         ConfigInterface $config,
-		PriceCurrencyInterface $priceCurrency,
-		Data $helperData,
+        PriceCurrencyInterface $priceCurrency,
+        Data $helperData,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->config = $config;
-		$this->priceCurrency = $priceCurrency;
-		$this->_helperData = $helperData;
-		
+        $this->priceCurrency = $priceCurrency;
+        $this->_helperData = $helperData;
+        
         if (isset($data['pathPattern'])) {
             $this->config->setPathPattern($data['pathPattern']);
         }
@@ -58,15 +58,14 @@ class Info extends \Magento\Payment\Block\Info
     /**
      * Function getFormatedPrice
      *
-     * @param float $price
-     *
+     * @param float $amount
      * @return string
      */
     public function getFormatedPrice($amount)
     {
         return $this->priceCurrency->convertAndFormat($amount);
     }
-	
+    
     /**
      * Prepare payment information
      *
@@ -84,7 +83,7 @@ class Info extends \Magento\Payment\Block\Info
                 explode(',', (string)$this->config->getValue('privateInfoKeys'))
             );
         }
-		
+        
         foreach ($storedFields as $field) {
             if ($payment->getAdditionalInformation($field) !== null) {
                 $this->setDataToTransfer(
@@ -113,10 +112,7 @@ class Info extends \Magento\Payment\Block\Info
     ) {
         $transport->setData(
             (string)$this->getLabel($field),
-            (string)$this->getValueView(
-                $field,
-                $value
-            )
+            (string)$this->getValueView($field, $value)
         );
     }
 
@@ -128,7 +124,7 @@ class Info extends \Magento\Payment\Block\Info
      */
     protected function getLabel($field)
     {
-        return __( $field );
+        return __($field);
     }
 
     /**
@@ -141,41 +137,47 @@ class Info extends \Magento\Payment\Block\Info
      */
     protected function getValueView($field, $value)
     {
-		if($field == '1_pay_date' || $field == '2_pay_date') {
-			$value = date("d/m/Y H:i", strtotime($value));
-		}
-		if($field == 'expiration_date') {
-			$value = date("d/m/Y", strtotime($value));
-		}
-		if($field == 'Status' || $field == 'Return Message' || $field == 'order_type') {
-			$value = __( $value );
-		}
-		
-		$payment = $this->getInfo();
-		
-		if($field == 'order_type' || $field == '1_pay_status' || $field == '2_pay_status'){
-			$value = __($value);
-		}
-		
-		if($field == '1_pay_amount') {
-			$installments = $payment->getAdditionalInformation('1_pay_installments');
-			$value = sprintf(__('%s in %sx'), strip_tags($this->getFormatedPrice($value)), $installments );
-		}		
-		if($field == '2_pay_amount') {
-			$installments = $payment->getAdditionalInformation('2_pay_installments');
-			$value = sprintf(__('%s in %sx'), strip_tags($this->getFormatedPrice($value)), $installments );
-		}
-		
+        if ($field == '1_pay_date' || $field == '2_pay_date') {
+            $value = date("d/m/Y H:i", strtotime($value));
+        }
+        if ($field == 'expiration_date') {
+            $value = date("d/m/Y", strtotime($value));
+        }
+        if ($field == 'Status' || $field == 'Return Message' || $field == 'order_type') {
+            $value = __($value);
+        }
+        
+        $payment = $this->getInfo();
+        
+        if ($field == 'order_type' || $field == '1_pay_status' || $field == '2_pay_status') {
+            $value = __($value);
+        }
+        
+        if ($field == '1_pay_amount') {
+            $installments = $payment->getAdditionalInformation('1_pay_installments');
+            $value = sprintf(__('%s in %sx'), strip_tags($this->getFormatedPrice($value)), $installments);
+        }
+        if ($field == '2_pay_amount') {
+            $installments = $payment->getAdditionalInformation('2_pay_installments');
+            $value = sprintf(__('%s in %sx'), strip_tags($this->getFormatedPrice($value)), $installments);
+        }
+        
         return $value;
     }
-	
-	public function getBarCodeImage($barCode)
-	{
-		$barCode 	= preg_replace('/^(\d{4})(\d{5})\d{1}(\d{10})\d{1}(\d{10})\d{1}(\d{15})$/', '$1$5$2$3$4', $barCode);
-		$generator 	= new \Picqer\Barcode\BarcodeGeneratorPNG();
-		$bar_code   = $generator->getBarcode($barCode, $generator::TYPE_INTERLEAVED_2_5);
-		$img_base64 = base64_encode($bar_code);
-		
-		echo '<img src="data:image/png;base64,' . $img_base64 . '" style="height: 70px;">';
-	} 
+
+    /**
+     * Method getBarCodeImage
+     *
+     * @param string $barCode
+     * @return string
+     */
+    public function getBarCodeImage($barCode)
+    {
+        $barCode    = preg_replace('/^(\d{4})(\d{5})\d{1}(\d{10})\d{1}(\d{10})\d{1}(\d{15})$/', '$1$5$2$3$4', $barCode);
+        $generator  = new \Picqer\Barcode\BarcodeGeneratorPNG();
+        $bar_code   = $generator->getBarcode($barCode, $generator::TYPE_INTERLEAVED_2_5);
+        $img_base64 = base64_encode($bar_code);
+        
+        return '<img src="data:image/png;base64,' . $img_base64 . '" style="height: 70px;">';
+    }
 }

@@ -38,9 +38,6 @@ class TransactionIdHandler implements HandlerInterface
     public function handle(array $handlingSubject, array $response)
     {
         $paymentDO = $this->subjectReader->readPayment($handlingSubject);
-		
-		//die('TransactionIdHandler');
-		
         if ($paymentDO->getPayment() instanceof Payment) {
             /** @var \Rede\Transaction */
             $transaction = $this->subjectReader->readTransaction($response);
@@ -63,8 +60,10 @@ class TransactionIdHandler implements HandlerInterface
             $order->save();
         }
     }
-	
+
     /**
+     * Method setTransactionId
+     *
      * @param Payment $orderPayment
      * @param \Rede\Transaction $transaction
      * @return void
