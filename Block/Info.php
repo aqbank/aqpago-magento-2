@@ -5,11 +5,11 @@
  */
 namespace Aqbank\Aqpago\Block;
 
-use Magento\Framework\Phrase;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Payment\Gateway\ConfigInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Aqbank\Aqpago\Helper\Data;
+use \Magento\Framework\Phrase;
+use \Magento\Framework\View\Element\Template\Context;
+use \Magento\Payment\Gateway\ConfigInterface;
+use \Magento\Framework\Pricing\PriceCurrencyInterface;
+use \Aqbank\Aqpago\Helper\Data;
 
 class Info extends \Magento\Payment\Block\Info
 {

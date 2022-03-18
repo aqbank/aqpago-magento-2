@@ -2,10 +2,10 @@
 
 namespace Aqbank\Aqpago\Block\Customer;
 
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\Template\Context;
-use Mkdevcommerce\Pontos\Model\Point;
-use Magento\Framework\Pricing\Helper\Data as priceHelper;
+use \Magento\Framework\View\Element\Template;
+use \Magento\Framework\View\Element\Template\Context;
+use \Mkdevcommerce\Pontos\Model\Point;
+use \Magento\Framework\Pricing\Helper\Data as priceHelper;
 
 class Cards extends Template
 {

@@ -21,6 +21,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init(Aqbank\Aqpago\Model\AddressCard::class, Aqbank\Aqpago\Model\ResourceModel\AddressCard::class);
+        $this->_init(\Aqbank\Aqpago\Model\AddressCard::class, \Aqbank\Aqpago\Model\ResourceModel\AddressCard::class);
     }
 }

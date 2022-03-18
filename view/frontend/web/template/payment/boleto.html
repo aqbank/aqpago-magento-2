@@ -5,74 +5,74 @@
  */
 -->
 <fieldset data-bind="attr: {class: 'fieldset ticket payment items boleto ' + getCode(), id: 'payment_boleto_form_' + getCode()}">
-	<fieldset class="fieldset aqpago-box-boleto aqpago-box-boleto-checkout">	
-		<!--
-		<div class="aqbank_payment_title aqbank_boleto_title">
-			<img class="aqbank-boleto-title" data-bind="attr: { src: getIconBoleto()}" />
-			<span>PAGAMENTO POR <strong>BOLETO BANCÁRIO</strong></span>
-		</div>
-		-->
-		
-        <div class="actions-toolbar grand-total aqbank-grand-total aqbank-grand-total-boleto">
-			
-			<div class="aqbank-grandtotal-card aqbank-relative" >
-				<span data-bind="text: getGrandTotalCheckout()"></span>
-			</div>
-			<span class="valor-boleto">VALOR DO BOLETO</span>
-			
-			<div class="boleto-relogio" data-bind="html: getIconRelogio()" ></div>
-		</div>
-		
-		
-		
-		<div class="actions-toolbar aqbank-infos">
-			<!-- ko i18n: 'A compensação do boleto pode levar até 2 dias úteis.'--><!-- /ko -->
-		</div>	
-		
-		<div class="actions-toolbar aqbank-infos">
-			<div class="aqbank-contactar">
-				<!-- ko i18n: 'VOCÊ SERÁ NOTIFICADO ATRAVÉS DESTES CONTATOS'--><!-- /ko -->
-			</div>	
-		</div>	
-		
-		<div class="actions-toolbar aqbank-infos">
-			<div class="aqbank-contactar">
-				<div class="phone">
-					<div class="img">
-						<div class="boleto-phone" data-bind="html: getIconPhone()"></div>
-					</div>
-					<div class="phone-text"></div>
-				</div>
-				<div class="email">
-					<div class="img">
-						<div class="boleto-email" data-bind="html: getIconEmail()"></div>
-					</div>
-					<div class="email-text" data-bind="html: getCustomerEmail()"></div>
-				</div>
-				
-			</div>
-		</div>
-		
-		<div class="aqbank_custom_informations">
-			<!-- ko template: 'Aqbank_Aqpago/payment/resume/address' --><!-- /ko -->
-			<!-- ko template: 'Aqbank_Aqpago/payment/resume/shipping' --><!-- /ko -->
-			<!-- ko template: 'Aqbank_Aqpago/payment/resume/totals' --><!-- /ko -->
-		</div>
-		
-        <div class="actions-toolbar button-finished">
-			<button data-role="review-save"
-					type="button"
-					data-bind="
-					attr: {title: $t('Place Order')},
-					click: finisheOrder
-					"
-					class="action primary checkout aqbank_place_order_button"
-					>
-				<span data-bind="i18n: 'Place Order'"></span>
-			</button>
+    <fieldset class="fieldset aqpago-box-boleto aqpago-box-boleto-checkout">    
+        <!--
+        <div class="aqbank_payment_title aqbank_boleto_title">
+            <img class="aqbank-boleto-title" data-bind="attr: { src: getIconBoleto()}" />
+            <span>PAGAMENTO POR <strong>BOLETO BANCÁRIO</strong></span>
         </div>
-		
-		<div style="clear:both;margin-bottom: 20px;"></div>
-		
+        -->
+        
+        <div class="actions-toolbar grand-total aqbank-grand-total aqbank-grand-total-boleto">
+            
+            <div class="aqbank-grandtotal-card aqbank-relative" >
+                <span data-bind="text: getGrandTotalCheckout()"></span>
+            </div>
+            <span class="valor-boleto"><!-- ko i18n: 'AMOUNT TICKET'--><!-- /ko --></span>
+            
+            <div class="boleto-relogio" data-bind="html: getIconRelogio()" ></div>
+        </div>
+        
+        
+        
+        <div class="actions-toolbar aqbank-infos">
+            <!-- ko i18n: 'It may take up to 2 business days to clear the ticket.'--><!-- /ko -->
+        </div>  
+        
+        <div class="actions-toolbar aqbank-infos">
+            <div class="aqbank-contactar">
+                <!-- ko i18n: 'YOU WILL BE NOTIFIED THROUGH THESE CONTACTS'--><!-- /ko -->
+            </div>  
+        </div>  
+        
+        <div class="actions-toolbar aqbank-infos">
+            <div class="aqbank-contactar">
+                <div class="phone">
+                    <div class="img">
+                        <div class="boleto-phone" data-bind="html: getIconPhone()"></div>
+                    </div>
+                    <div class="phone-text"></div>
+                </div>
+                <div class="email">
+                    <div class="img">
+                        <div class="boleto-email" data-bind="html: getIconEmail()"></div>
+                    </div>
+                    <div class="email-text" data-bind="html: getCustomerEmail()"></div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="aqbank_custom_informations">
+            <!-- ko template: 'Aqbank_Aqpago/payment/resume/address' --><!-- /ko -->
+            <!-- ko template: 'Aqbank_Aqpago/payment/resume/shipping' --><!-- /ko -->
+            <!-- ko template: 'Aqbank_Aqpago/payment/resume/totals' --><!-- /ko -->
+        </div>
+        
+        <div class="actions-toolbar button-finished">
+            <button data-role="review-save"
+                    type="button"
+                    data-bind="
+                    attr: {title: $t('Place Order')},
+                    click: finisheOrder
+                    "
+                    class="action primary checkout aqbank_place_order_button"
+                    >
+                <span data-bind="i18n: 'Place Order'"></span>
+            </button>
+        </div>
+        
+        <div style="clear:both;margin-bottom: 20px;"></div>
+        
     </fieldset>
 </fieldset>

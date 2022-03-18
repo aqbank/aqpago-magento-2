@@ -29,7 +29,7 @@ class Address extends Action
         if ($this->getRequest()->isAjax()) {
             
             $data = $this->getRequest()->getPost();
-            $viaCep = $this->_objectManager->get(Aqbank\Aqpago\Model\ViaCep::class);
+            $viaCep = $this->_objectManager->get(\Aqbank\Aqpago\Model\ViaCep::class);
             $postCode = $viaCep->sendViaCep($data['postcode']);
             
             if (isset($postCode['logradouro']) &&

@@ -64,7 +64,7 @@ class Payment extends Fieldset
             ' class="button action-configure open' .
             '" id="' .
             $htmlId .
-            '-head" onclick="AqbankToggleSolution.call(this, \'' .
+            '-head" style="float: right;" onclick="AqbankToggleSolution.call(this, \'' .
             $htmlId .
             "', '" .
             $this->getUrl(

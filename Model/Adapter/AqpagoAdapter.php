@@ -71,7 +71,7 @@ class AqpagoAdapter
         $this->token = $this->config->getConfig('token');
         $this->environment = $this->config->getConfig('environment');
         $objctManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $remote = $objctManager->get(Magento\Framework\HTTP\PhpEnvironment\RemoteAddress::class);
+        $remote = $objctManager->get(\Magento\Framework\HTTP\PhpEnvironment\RemoteAddress::class);
         $this->_remoteAddress = $remote->getRemoteAddress();
     }
     /**

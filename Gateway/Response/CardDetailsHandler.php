@@ -45,7 +45,7 @@ class CardDetailsHandler implements HandlerInterface
         $this->config = $config;
         $this->cardsFactory = $cardsFactory;
         $objctManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $remote = $objctManager->get(Magento\Framework\HTTP\PhpEnvironment\RemoteAddress::class);
+        $remote = $objctManager->get(\Magento\Framework\HTTP\PhpEnvironment\RemoteAddress::class);
         $this->_remoteAddress = $remote->getRemoteAddress();
     }
 

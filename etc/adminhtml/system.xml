@@ -11,35 +11,35 @@
         <section id="payment">
             <group id="aqpago" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
                    showInStore="1">
-                <comment><![CDATA[<div class="aqbank-payment-logo"></div><div class="aqbank-payment-text">Venda parcelado em até 12X no cartão para seu cliente e tenha o dinheiro em sua conta com 1 dia, taxas justas e sem surpresas!</div>]]></comment>
+                <comment><![CDATA[<div class="aqbank-payment-logo"></div><div class="aqbank-payment-text">AQPago payments, sell installments up to 12X on the card for your customer and have the money in your account within 1 day, fair fees and no surprises!</div>]]></comment>
                 <fieldset_css>complex klarna-section</fieldset_css>
-				<frontend_model>Aqbank\Aqpago\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
-				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1"
+                <frontend_model>Aqbank\Aqpago\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1"
                        showInWebsite="1"
                        showInStore="0">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>	
-				
+                </field>    
+                
 
                 <field id="payment_action" translate="label" type="select" sortOrder="6" showInDefault="1"
                        showInWebsite="1" showInStore="1">
                     <label>Payment Action</label>
                     <source_model>Aqbank\Aqpago\Model\Adminhtml\Source\PaymentAction</source_model>
                 </field>
-				
+                
                 <field id="environment" translate="label" type="select" sortOrder="5" showInDefault="1"
                        showInWebsite="1" showInStore="0">
                     <label>Environment</label>
                     <source_model>Aqbank\Aqpago\Model\Adminhtml\Source\Environment</source_model>
                     <config_path>payment/aqpago/environment</config_path>
                 </field>
-				
+                
                 <field id="multi_active" translate="label" type="select" sortOrder="10"  showInDefault="0" showInWebsite="0" showInStore="0">
                     <label>Active Multi Payment</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-				
+                
                 <field id="payments_active" translate="label comment" type="multiselect" sortOrder="20" showInDefault="0" showInWebsite="0" showInStore="0">
                     <label>Meios Ativos</label>
                     <source_model>Aqbank\Aqpago\Model\Config\Backend\Payments</source_model>
@@ -47,7 +47,7 @@
                         <field id="active">1</field>
                     </depends>
                 </field>
-				
+                
                 <field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Title</label>
@@ -60,11 +60,11 @@
                 <field id="token" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>AQPAGO Token</label>
-					<comment><![CDATA[Obtenha através do site <a href="https://aqbank.app">https://aqbank.app</a> ou através do APP AQPago Gestor.]]></comment>
+                    <comment><![CDATA[Get your token at <a href="https://aqbank.app">https://aqbank.app</a> Integrations menu -> ShopAQPago Access or through the AQPago Gestor APP.]]></comment>
                 </field>
-				
-                <field id="soft_descriptor" translate="label tooltip" type="text" sortOrder="50" showInDefault="1"
-                       showInWebsite="1" showInStore="0">
+                
+                <field id="soft_descriptor" translate="label tooltip" type="text" sortOrder="50" showInDefault="0"
+                       showInWebsite="0" showInStore="0">
                     <label>Nome na fatura</label>
                     <tooltip>
                         <![CDATA[Nome que vai na fatura do cartão]]>
@@ -97,44 +97,27 @@
 
                 <field id="body_instructions" translate="label" type="text" sortOrder="93" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Ticket Body Instructions</label>
-					<comment>instructions in the body of the ticket</comment>
+                    <comment>instructions in the body of the ticket</comment>
                 </field>
 
-				
+                
                 <field id="sort_order" translate="label" type="text" sortOrder="95" showInDefault="1"
                        showInWebsite="1"
                        showInStore="0">
                     <label>Sort Order</label>
                     <frontend_class>validate-number</frontend_class>
                 </field>
-				
+                
                 <field id="document_input" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Tax/VAT field</label>
-					<comment><![CDATA[ 
-					<div class="messages warning-message-aqbank" style="margin-top: 15px;">
-						<div class="message message-warning warning">
-							<div id="response-seller" data-ui-id="messages-message-warning">
-								Se você usa o campo 'vat_id' em seu checkout não alterar!  Para utilizar nosso meio de pagamento o campo Documento é obrigatório, ative ele em seu checkout e caso use um campo personalizado indique o atributo name do input utilizado no checkout aqui!
-							</div>
-						</div>
-					</div>					
-					]]></comment>
-                </field>				
-				
+                    <comment>If you use the 'vat_id' field in your checkout don't change it! To use our payment method, the Document field is mandatory, activate it in your checkout and if you use a custom field, indicate the name attribute of the input used at checkout here! Go to Stores > Configuration > Customers > Customer Configuration > (Change Scope to correct website/store view) > Create New Account Options > Show VAT Number on Storefront</comment>
+                </field>
                 <field id="phone_input" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Phone Number field</label>
-					<comment><![CDATA[ 
-					<div class="messages warning-message-aqbank" style="margin-top: 15px;">
-						<div class="message message-warning warning">
-							<div id="response-seller" data-ui-id="messages-message-warning">
-								Se você usa o campo 'telephone' em seu checkout não alterar! Para utilizar nosso meio de pagamento o campo Telefone é obrigatório, ative ele em seu checkout e caso use um campo personalizado indique o atributo name do input utilizado no checkout aqui!
-							</div>
-						</div>
-					</div>					
-					]]></comment>
+                    <comment>If you use the 'telephone' field in your checkout do not change! To use our payment method, the Telephone field is mandatory, activate it at your checkout and if you use a custom field, indicate the name attribute of the input used at checkout here!</comment>
                 </field>
-				
-            </group>			
+                
+            </group>            
         </section>
     </system>
 </config>

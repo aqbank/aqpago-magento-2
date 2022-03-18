@@ -18,7 +18,7 @@ class Cards extends \Magento\Framework\Model\AbstractModel implements \Magento\F
      */
     protected function _construct()
     {
-        $this->_init(Aqbank\Aqpago\Model\ResourceModel\Cards::class);
+        $this->_init(\Aqbank\Aqpago\Model\ResourceModel\Cards::class);
     }
     /**
      * Method getIdentities

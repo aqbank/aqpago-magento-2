@@ -77,14 +77,13 @@ class DataAssignObserver extends AbstractDataAssignObserver
 
         $quote              = $this->quoteFactory->create()->load($payment->getQuoteId());
         $objectManager      = \Magento\Framework\App\ObjectManager::getInstance();
-        $customerSession    = $objectManager->get(Magento\Customer\Model\Session::class);
+        $customerSession    = $objectManager->get(\Magento\Customer\Model\Session::class);
         if ($customerSession->isLoggedIn()) {
             $customerId = $quote->getCustomerId();
             $payment->setAdditionalInformation('customer_id', $customerId);
         }
 
         $amountOne  = 0.00;
-
         if ($additionalData->getData('type_payment') == 'credit' ||
             $additionalData->getData('type_payment') == 'ticket'
         ) {

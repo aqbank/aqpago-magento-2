@@ -88,7 +88,7 @@ class ConfigProvider implements ConfigProviderInterface
     {
         $savedCards = [];
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $customerSession = $objectManager->get(Magento\Customer\Model\Session::class);
+        $customerSession = $objectManager->get(\Magento\Customer\Model\Session::class);
         if ($customerSession->isLoggedIn()) {
             $logger = new \Monolog\Logger('aqpago');
             $logger->pushHandler(
